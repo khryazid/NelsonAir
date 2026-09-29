@@ -5,20 +5,16 @@ import Link from 'next/link';
 import { 
   Plane, 
   Search, 
-  Filter, 
-  ShieldCheck, 
   Compass, 
-  ArrowRight,
-  SlidersHorizontal,
   X
 } from 'lucide-react';
 import { AircraftCard } from '@/components/AircraftCard';
 import { AircraftDetailModal } from '@/components/AircraftDetailModal';
 import { INITIAL_AIRCRAFT } from '@/lib/data-store';
-import { Aircraft, AviationAuthority } from '@/lib/types';
+import { Aircraft } from '@/lib/types';
 
 export default function BrokeragePage() {
-  const [aircraftList, setAircraftList] = useState<Aircraft[]>(INITIAL_AIRCRAFT);
+  const [aircraftList] = useState<Aircraft[]>(INITIAL_AIRCRAFT);
   const [selectedAircraft, setSelectedAircraft] = useState<Aircraft | null>(null);
   
   // Filters
@@ -54,7 +50,7 @@ export default function BrokeragePage() {
   }, [aircraftList, searchTerm, selectedAuthority, selectedCategory, selectedBase]);
 
   return (
-    <div className="bg-[#070b16] text-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#f8fafc] text-slate-900 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       
       {/* Detail Modal */}
       <AircraftDetailModal
@@ -65,47 +61,47 @@ export default function BrokeragePage() {
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-800">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-2">
               <Plane className="w-3.5 h-3.5" />
               <span>Inventario Exclusivo & Auditado</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
               Catálogo de Brokerage Aeronáutico
             </h1>
-            <p className="text-slate-400 text-sm mt-1 max-w-xl">
+            <p className="text-slate-600 text-sm mt-1 max-w-xl">
               Aeronaves disponibles para compraventa inmediata con peritaje legal in situ, horas TTAF certificadas y títulos libres de gravámenes.
             </p>
           </div>
 
           <Link
             href="/off-market"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 border border-amber-500/40 text-amber-300 hover:bg-slate-800 text-xs font-bold transition self-start md:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-blue-700 hover:bg-blue-50 text-xs font-bold transition shadow-xs self-start md:self-auto"
           >
-            <Compass className="w-4 h-4 text-amber-400" />
+            <Compass className="w-4 h-4 text-blue-600" />
             <span>¿Busca una aeronave específica? Mandato Off-Market</span>
           </Link>
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-[#0b1426] border border-slate-800 p-4 sm:p-5 rounded-2xl shadow-xl space-y-4">
+        <div className="bg-white border border-slate-200 p-5 rounded-2xl shadow-xs space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             
             {/* Search Input */}
             <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-3 text-slate-500" />
+              <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Buscar por modelo o matrícula..."
-                className="w-full bg-[#060b14] border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:outline-none"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-2.5 text-slate-400 hover:text-white"
+                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -117,7 +113,7 @@ export default function BrokeragePage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full bg-[#060b14] border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               >
                 <option value="ALL">Todas las Categorías</option>
                 <option value="turboprop">Turbohélices (King Air, Cheyenne)</option>
@@ -131,7 +127,7 @@ export default function BrokeragePage() {
               <select
                 value={selectedAuthority}
                 onChange={(e) => setSelectedAuthority(e.target.value)}
-                className="w-full bg-[#060b14] border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               >
                 <option value="ALL">Todas las Jurisdicciones</option>
                 <option value="INAC">INAC (Matrículas YV Venezolanas)</option>
@@ -144,7 +140,7 @@ export default function BrokeragePage() {
               <select
                 value={selectedBase}
                 onChange={(e) => setSelectedBase(e.target.value)}
-                className="w-full bg-[#060b14] border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               >
                 <option value="ALL">Todas las Bases Operativas</option>
                 <option value="SVCS">SVCS (Charallave / Caracas)</option>
@@ -155,7 +151,7 @@ export default function BrokeragePage() {
 
           </div>
 
-          <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-850">
+          <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
             <span>Mostrando <strong>{filteredAircraft.length}</strong> aeronave(s) disponible(s)</span>
             {(searchTerm || selectedAuthority !== 'ALL' || selectedCategory !== 'ALL' || selectedBase !== 'ALL') && (
               <button
@@ -165,7 +161,7 @@ export default function BrokeragePage() {
                   setSelectedCategory('ALL');
                   setSelectedBase('ALL');
                 }}
-                className="text-amber-400 hover:text-amber-300 font-semibold"
+                className="text-blue-700 hover:text-blue-800 font-bold"
               >
                 Restablecer Filtros
               </button>
@@ -185,15 +181,15 @@ export default function BrokeragePage() {
             ))}
           </div>
         ) : (
-          <div className="bg-[#0b1426] border border-slate-800 rounded-2xl p-12 text-center space-y-4">
-            <Plane className="w-12 h-12 text-slate-600 mx-auto" />
-            <h3 className="text-lg font-bold text-white">No se encontraron aeronaves con estos filtros</h3>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center space-y-4 shadow-xs">
+            <Plane className="w-12 h-12 text-slate-300 mx-auto" />
+            <h3 className="text-lg font-bold text-slate-800">No se encontraron aeronaves con estos filtros</h3>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
               Si la aeronave que busca no figura en el catálogo público, puede registrar un mandato confidencial de búsqueda off-market.
             </p>
             <Link
               href="/off-market"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition"
             >
               <Compass className="w-4 h-4" />
               <span>Registrar Mandato de Búsqueda</span>

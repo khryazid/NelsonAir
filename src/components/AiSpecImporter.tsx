@@ -3,12 +3,8 @@
 import React, { useState } from 'react';
 import { 
   Sparkles, 
-  Upload, 
   FileText, 
-  CheckCircle2, 
-  AlertCircle, 
   ArrowRight,
-  Plane,
   RefreshCw
 } from 'lucide-react';
 import { AircraftListingDraft, Aircraft } from '@/lib/types';
@@ -57,7 +53,6 @@ Logbooks complete, no damage history.`;
       setExtractedDraft(data);
     } catch (err) {
       console.warn('Fallback parser', err);
-      // Fallback draft
       const fallback: AircraftListingDraft = {
         make: 'Beechcraft',
         model: 'King Air 350i',
@@ -111,28 +106,28 @@ Logbooks complete, no damage history.`;
   };
 
   return (
-    <div className="bg-[#0b1426] border border-amber-500/30 rounded-2xl p-6 shadow-xl space-y-5">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+    <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5 text-slate-900">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/50 flex items-center justify-center text-amber-400">
-            <Sparkles className="w-4 h-4" />
+          <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shadow-2xs">
+            <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Asistente de Ingesta Automatizada de Fichas Técnicas (AI Spec Parser)
             </h3>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-500">
               Pega el texto sin formato de Controller, Trade-A-Plane o PDF para normalizarlo automáticamente al esquema aeronáutico.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Left Input */}
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
+            <label className="block text-xs font-bold text-slate-700 mb-1">
               URL de la Publicación Externa (Opcional):
             </label>
             <input
@@ -140,19 +135,19 @@ Logbooks complete, no damage history.`;
               value={listingUrl}
               onChange={(e) => setListingUrl(e.target.value)}
               placeholder="https://www.controller.com/listing/for-sale/..."
-              className="w-full bg-[#060b14] border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:outline-none"
             />
           </div>
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-semibold text-slate-300">
+              <label className="text-xs font-bold text-slate-700">
                 Texto de la Ficha Técnica (Spec Sheet) / Copiar y Pegar:
               </label>
               <button
                 type="button"
                 onClick={() => setInputText(sampleControllerText)}
-                className="text-[11px] text-amber-400 hover:text-amber-300 underline"
+                className="text-[11px] text-blue-700 hover:text-blue-800 font-bold underline"
               >
                 Cargar Texto de Ejemplo
               </button>
@@ -162,7 +157,7 @@ Logbooks complete, no damage history.`;
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Pegue aquí el bloque de texto con fabricante, modelo, horas de célula, motores, aviónica, precio..."
-              className="w-full bg-[#060b14] border border-slate-700 rounded-lg p-3 text-xs text-slate-200 placeholder-slate-600 font-mono focus:border-amber-500 focus:outline-none resize-none"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-900 placeholder-slate-400 font-mono focus:bg-white focus:border-blue-600 focus:outline-none resize-none"
             />
           </div>
 
@@ -170,7 +165,7 @@ Logbooks complete, no damage history.`;
             type="button"
             disabled={isLoading || (!inputText && !listingUrl)}
             onClick={handleProcess}
-            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 transition"
+            className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 transition"
           >
             {isLoading ? (
               <>
@@ -187,42 +182,42 @@ Logbooks complete, no damage history.`;
         </div>
 
         {/* Right Output: Structured Preview */}
-        <div className="bg-[#060b14] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
           <div>
-            <span className="text-[11px] text-slate-400 uppercase tracking-wider font-bold block pb-2 border-b border-slate-800">
+            <span className="text-[11px] text-slate-500 uppercase tracking-wider font-bold block pb-2 border-b border-slate-200">
               Salida Estructurada (AircraftListingDraft JSON)
             </span>
 
             {extractedDraft ? (
               <div className="mt-3 space-y-2 text-xs">
-                <div className="p-2.5 rounded bg-slate-900 border border-slate-800 space-y-1">
+                <div className="p-3 rounded-xl bg-white border border-slate-200 space-y-1.5 shadow-2xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Aeronave:</span>
-                    <span className="font-bold text-amber-400">{extractedDraft.year} {extractedDraft.make} {extractedDraft.model}</span>
+                    <span className="text-slate-500 font-medium">Aeronave:</span>
+                    <span className="font-bold text-slate-900">{extractedDraft.year} {extractedDraft.make} {extractedDraft.model}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Matrícula:</span>
-                    <span className="font-bold text-white">{extractedDraft.registration}</span>
+                    <span className="text-slate-500 font-medium">Matrícula:</span>
+                    <span className="font-black text-blue-700 font-mono">{extractedDraft.registration}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Horas TTAF:</span>
-                    <span className="font-mono text-sky-400">{extractedDraft.airframe_total_time_hours} hrs</span>
+                    <span className="text-slate-500 font-medium">Horas TTAF:</span>
+                    <span className="font-mono text-slate-900 font-bold">{extractedDraft.airframe_total_time_hours} hrs</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Planta Motriz:</span>
-                    <span className="text-slate-200">{extractedDraft.engine_model}</span>
+                    <span className="text-slate-500 font-medium">Planta Motriz:</span>
+                    <span className="text-slate-800">{extractedDraft.engine_model}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Precio Sugerido:</span>
-                    <span className="font-bold text-emerald-400">${extractedDraft.price_usd?.toLocaleString()} USD</span>
+                    <span className="text-slate-500 font-medium">Precio Sugerido:</span>
+                    <span className="font-black text-blue-900">${extractedDraft.price_usd?.toLocaleString()} USD</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <span className="text-[11px] text-slate-400 block mb-1">Aviónica Detectada:</span>
+                  <span className="text-[11px] text-slate-500 font-bold block mb-1">Aviónica Detectada:</span>
                   <div className="flex flex-wrap gap-1">
                     {extractedDraft.avionics_summary.map((av, idx) => (
-                      <span key={idx} className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                      <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-white text-blue-700 border border-blue-200 font-semibold shadow-2xs">
                         {av}
                       </span>
                     ))}
@@ -230,8 +225,8 @@ Logbooks complete, no damage history.`;
                 </div>
               </div>
             ) : (
-              <div className="h-44 flex flex-col items-center justify-center text-slate-500 text-xs text-center px-4">
-                <FileText className="w-8 h-8 mb-2 opacity-40" />
+              <div className="h-44 flex flex-col items-center justify-center text-slate-400 text-xs text-center px-4">
+                <FileText className="w-8 h-8 mb-2 opacity-50" />
                 <span>Haga clic en &quot;Cargar Texto de Ejemplo&quot; o pegue una ficha para ver la extracción normalizada.</span>
               </div>
             )}
@@ -241,7 +236,7 @@ Logbooks complete, no damage history.`;
             <button
               type="button"
               onClick={handleApplyToForm}
-              className="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow"
+              className="mt-4 w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs"
             >
               <span>Aplicar al Formulario de Carga (Status: Draft)</span>
               <ArrowRight className="w-3.5 h-3.5" />

@@ -1,58 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #080d1a;
-  --foreground: #f1f5f9;
-  --navy-deep: #050a14;
-  --navy-surface: #0c1527;
-  --navy-card: #101c34;
-  --navy-border: #1e293b;
-  --gold-accent: #c5a059;
-  --gold-hover: #dfb76c;
-  --aviation-blue: #0284c7;
-  --aviation-sky: #38bdf8;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --aviation-navy: #0a2540;
+  --aviation-blue: #1d4ed8;
+  --aviation-sky: #0284c7;
+  --aviation-light: #f0f7ff;
+  --aviation-ice: #e0f2fe;
+  --aviation-border: #e2e8f0;
 }
 
 body {
-  background-color: var(--navy-deep);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom aviation gradients & effects */
+/* Custom aviation subtle grid in light theme */
 .bg-radar-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
 }
 
-.gold-glow {
-  box-shadow: 0 0 25px -5px rgba(197, 160, 89, 0.25);
+.aviation-gradient {
+  background: linear-gradient(135deg, #0a2540 0%, #1e40af 50%, #0284c7 100%);
 }
 
-.sky-glow {
-  box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+.aviation-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
 }
 
-/* Custom scrollbar */
+.aviation-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.1), 0 8px 10px -6px rgba(2, 132, 199, 0.05);
+}
+
+/* Custom light scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080d1a;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94a3b8;
 }
 
 /* Print styles for PPI Legal-Technical Reports */

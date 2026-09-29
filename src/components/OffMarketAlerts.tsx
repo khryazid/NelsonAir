@@ -6,9 +6,6 @@ import {
   Send, 
   MessageSquare, 
   CheckCircle2, 
-  Plane, 
-  Compass, 
-  ChevronRight,
   Sparkles
 } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/utils';
@@ -87,7 +84,6 @@ export function OffMarketAlerts() {
 
       setSubmitted(true);
     } catch (err: any) {
-      // In case of network error, simulate graceful fallback
       console.warn('API error, falling back locally', err);
       setSubmitted(true);
     } finally {
@@ -102,52 +98,52 @@ export function OffMarketAlerts() {
   const whatsappDirectUrl = buildWhatsAppLink(dynamicWhatsAppText);
 
   return (
-    <section id="off-market" className="bg-[#070b16] text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 relative overflow-hidden">
+    <section id="off-market" className="bg-slate-50 text-slate-900 py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200 relative overflow-hidden">
+      
       {/* Background glow effects */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-sky-900/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-100/60 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-sky-100/60 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         
         {/* Header Section */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/40 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Acceso Privado & Confidencial</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">
             Alertas de Mercado Off-Market & Mandato de Búsqueda
           </h2>
-          <p className="text-slate-400 mt-3 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-600 mt-3 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Acceda a aeronaves verificadas antes de su publicación general o registre los requerimientos específicos de su próxima misión sin intermediarios.
           </p>
         </div>
 
         {submitted ? (
-          /* Confirmation card as specified in PDF page 11 */
-          <div className="bg-[#0b1528] border border-emerald-500/40 p-8 sm:p-10 rounded-2xl text-center shadow-2xl animate-in zoom-in-95 duration-200">
-            <div className="w-16 h-16 rounded-full bg-emerald-950/80 border border-emerald-500/60 flex items-center justify-center text-emerald-400 mx-auto mb-5 shadow-lg">
+          <div className="bg-white border border-emerald-300 p-8 sm:p-10 rounded-3xl text-center shadow-xl animate-in zoom-in-95 duration-200">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 mx-auto mb-5 shadow-xs">
               <ShieldCheck className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight">
               Requerimientos Registrados con Éxito
             </h3>
-            <p className="text-slate-300 text-sm mt-3 max-w-lg mx-auto leading-relaxed">
+            <p className="text-slate-600 text-sm mt-3 max-w-lg mx-auto leading-relaxed">
               Le notificaremos de inmediato en cuanto ingrese al inventario o se identifique fuera de mercado una aeronave que cumpla con sus especificaciones exactas.
             </p>
 
-            <div className="mt-8 p-4 rounded-xl bg-slate-900/90 border border-slate-800 max-w-md mx-auto text-left text-xs text-slate-300 space-y-1.5">
+            <div className="mt-8 p-5 rounded-2xl bg-slate-50 border border-slate-200 max-w-md mx-auto text-left text-xs text-slate-700 space-y-2">
               <div className="flex justify-between">
-                <span className="text-slate-500">Categorías:</span>
-                <span className="font-semibold text-slate-200">{formData.categories.join(', ')}</span>
+                <span className="text-slate-500 font-medium">Categorías:</span>
+                <span className="font-bold text-slate-900">{formData.categories.join(', ')}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Presupuesto:</span>
-                <span className="font-semibold text-amber-400">{formData.budget.replace('_', ' - ')}</span>
+                <span className="text-slate-500 font-medium">Presupuesto:</span>
+                <span className="font-bold text-blue-700">{formData.budget.replace('_', ' - ')}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Horizonte:</span>
-                <span className="font-semibold text-sky-400">{formData.timeline}</span>
+                <span className="text-slate-500 font-medium">Horizonte:</span>
+                <span className="font-bold text-slate-900">{formData.timeline}</span>
               </div>
             </div>
 
@@ -156,27 +152,26 @@ export function OffMarketAlerts() {
                 href={whatsappDirectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm font-bold shadow-lg transition"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-md transition"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Continuar conversación directa por WhatsApp</span>
               </a>
               <button
                 onClick={() => setSubmitted(false)}
-                className="w-full sm:w-auto text-xs text-slate-400 hover:text-white px-4 py-2"
+                className="w-full sm:w-auto text-xs font-semibold text-slate-500 hover:text-slate-900 px-4 py-2"
               >
                 Registrar otro mandato
               </button>
             </div>
           </div>
         ) : (
-          /* Form as specified in PDF pages 8, 10-12 */
           <form 
             onSubmit={handleSubmit} 
-            className="space-y-6 bg-[#0b1426]/90 p-6 sm:p-10 rounded-2xl border border-slate-800 shadow-2xl backdrop-blur-sm"
+            className="space-y-6 bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl"
           >
             {errorMessage && (
-              <div className="p-3 rounded-lg bg-red-950/80 border border-red-800 text-red-300 text-xs">
+              <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
                 {errorMessage}
               </div>
             )}
@@ -184,7 +179,7 @@ export function OffMarketAlerts() {
             {/* Row 1: Contact Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">
                   Nombre o Razón Social *
                 </label>
                 <input
@@ -193,12 +188,12 @@ export function OffMarketAlerts() {
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="Ej. Ing. Carlos Mendoza / Corporación Aero"
-                  className="w-full bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:outline-none transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">
                   Correo Electrónico Corporativo *
                 </label>
                 <input
@@ -207,21 +202,21 @@ export function OffMarketAlerts() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="ejecutivo@empresa.com"
-                  className="w-full bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:outline-none transition"
                 />
               </div>
             </div>
 
             {/* Row 2: WhatsApp Phone with Country Code */}
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">
                 Teléfono / WhatsApp de Contacto Directo
               </label>
               <div className="flex gap-2">
                 <select
                   value={formData.countryCode}
                   onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                  className="bg-[#060b14] border border-slate-700/80 rounded-lg px-3 py-2.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-700 focus:border-blue-600 focus:outline-none"
                 >
                   <option value="+58">🇻🇪 +58 (Venezuela)</option>
                   <option value="+1">🇺🇸 +1 (USA / Florida)</option>
@@ -235,14 +230,14 @@ export function OffMarketAlerts() {
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                   placeholder="412 123 4567"
-                  className="flex-1 bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition"
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:outline-none transition"
                 />
               </div>
             </div>
 
             {/* Row 3: Preferred Aircraft Categories (Multi-select) */}
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-2">
+              <label className="block text-xs font-bold text-slate-700 mb-2">
                 Categoría(s) de Aeronave de Interés
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -253,14 +248,14 @@ export function OffMarketAlerts() {
                       type="button"
                       key={cat.id}
                       onClick={() => toggleCategory(cat.id)}
-                      className={`text-left px-3.5 py-2.5 rounded-lg border text-xs font-medium transition flex items-center justify-between ${
+                      className={`text-left px-3.5 py-2.5 rounded-xl border text-xs font-medium transition flex items-center justify-between ${
                         selected
-                          ? 'bg-amber-950/40 border-amber-500/80 text-amber-200'
-                          : 'bg-[#060b14] border-slate-800 text-slate-300 hover:border-slate-700'
+                          ? 'bg-blue-50 border-blue-500 text-blue-900 font-bold shadow-2xs'
+                          : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
                       }`}
                     >
                       <span>{cat.label}</span>
-                      <CheckCircle2 className={`w-4 h-4 shrink-0 ml-2 ${selected ? 'text-amber-400' : 'text-slate-600'}`} />
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 ml-2 ${selected ? 'text-blue-600' : 'text-slate-300'}`} />
                     </button>
                   );
                 })}
@@ -270,13 +265,13 @@ export function OffMarketAlerts() {
             {/* Row 4: Budget Range & Operation Profile */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">
                   Rango de Inversión Estimado (USD)
                 </label>
                 <select
                   value={formData.budget}
                   onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="w-full bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 focus:border-blue-600 focus:outline-none"
                 >
                   <option value="under_250k">&lt; $250.000 USD</option>
                   <option value="250k_750k">$250.000 - $750.000 USD</option>
@@ -286,13 +281,13 @@ export function OffMarketAlerts() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">
                   Tipo de Operación Principal
                 </label>
                 <select
                   value={formData.operationProfile}
                   onChange={(e) => setFormData({ ...formData, operationProfile: e.target.value })}
-                  className="w-full bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 focus:border-blue-600 focus:outline-none"
                 >
                   <option value="paved_ifr">Pistas preparadas / Vuelo Ejecutivo IFR</option>
                   <option value="unpaved_strips">Pistas no pavimentadas / Fincas / Minería (STOL)</option>
@@ -303,13 +298,13 @@ export function OffMarketAlerts() {
 
             {/* Row 5: Purchase Timeline */}
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 mb-1.5">
                 Horizonte de Compra
               </label>
               <select
                 value={formData.timeline}
                 onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                className="w-full bg-[#060b14] border border-slate-700/80 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 focus:border-blue-600 focus:outline-none"
               >
                 <option value="immediate">Inmediato (&lt; 30 días - Fondos disponibles)</option>
                 <option value="1_3_months">Corto plazo (1 a 3 meses)</option>
@@ -318,21 +313,21 @@ export function OffMarketAlerts() {
             </div>
 
             {/* Actions: Direct WhatsApp + Submit */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-800">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
               <a
                 href={whatsappDirectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-emerald-500/40 text-emerald-400 hover:bg-emerald-950/40 text-xs font-semibold transition"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-emerald-300 text-emerald-700 hover:bg-emerald-50 text-xs font-bold transition"
               >
-                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>¿Prefiere atención inmediata? WhatsApp</span>
               </a>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 rounded-lg text-xs font-bold transition shadow-lg disabled:opacity-50"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitting ? 'Registrando mandato...' : 'Registrar Preferencias Confidenciales'}</span>

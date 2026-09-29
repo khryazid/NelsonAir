@@ -7,28 +7,32 @@ import {
   ShieldCheck, 
   Plane, 
   Calculator, 
-  FileText, 
   Lock, 
   Menu, 
   X, 
   MessageSquare,
   Compass,
-  Briefcase
+  Briefcase,
+  ChevronDown
 } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [portalsOpen, setPortalsOpen] = useState(false);
   const pathname = usePathname();
 
-  const navLinks = [
+  const mainLinks = [
     { name: 'Inicio', href: '/' },
-    { name: 'Catálogo Aeronaves', href: '/brokerage', icon: Plane },
-    { name: 'Inspección PPI in situ', href: '/inspeccion', icon: ShieldCheck },
-    { name: 'Calculadora Costos', href: '/calculadora', icon: Calculator },
-    { name: 'Oportunidades Off-Market', href: '/off-market', icon: Compass },
-    { name: 'Portal Propietario', href: '/portal', icon: Lock, badge: 'Privado' },
-    { name: 'CMS Abogado', href: '/cms', icon: Briefcase, badge: 'Admin' },
+    { name: 'Catálogo', href: '/brokerage', icon: Plane },
+    { name: 'Inspección PPI', href: '/inspeccion', icon: ShieldCheck },
+    { name: 'Calculadora', href: '/calculadora', icon: Calculator },
+    { name: 'Off-Market', href: '/off-market', icon: Compass },
+  ];
+
+  const portalLinks = [
+    { name: 'Portal Propietario', href: '/portal', icon: Lock, badge: 'Clientes' },
+    { name: 'Panel Legal CMS', href: '/cms', icon: Briefcase, badge: 'Abogado' },
   ];
 
   const whatsappDirect = buildWhatsAppLink(
@@ -36,87 +40,121 @@ export function Navbar() {
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-[#080d1a]/90 backdrop-blur-md border-b border-slate-800/80">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo / Authority Brand */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-lg bg-gradient-to-br from-amber-500/20 to-sky-600/30 border border-amber-500/40 flex items-center justify-center text-amber-400 group-hover:border-amber-400 transition">
-              <Plane className="w-6 h-6 transform -rotate-45" />
+          {/* Brand Logo & Authority */}
+          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-500 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+              <Plane className="w-5 h-5 transform -rotate-45" />
             </div>
-            <div>
+            <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-amber-400 transition">
+                <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                   NELSON R.
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800 font-semibold tracking-wider uppercase">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/80 uppercase tracking-wider">
                   Pilot-Lawyer
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 font-medium tracking-wide">
+              <p className="text-[11px] text-slate-500 font-medium tracking-wide">
                 Derecho Aeronáutico & Mercantil • Brokerage
               </p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation (Concise, Clean & Spacious) */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => {
+            {mainLinks.map((link) => {
               const isActive = pathname === link.href;
               const Icon = link.icon;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-2 rounded-lg text-xs font-semibold tracking-wide transition flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-slate-800/90 text-amber-400 border border-amber-500/30 shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                      ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200/70 shadow-xs'
+                      : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
                   }`}
                 >
-                  {Icon && <Icon className="w-3.5 h-3.5 opacity-80" />}
-                  {link.name}
-                  {link.badge && (
-                    <span className={`text-[9px] px-1 rounded uppercase tracking-tighter ${
-                      link.badge === 'Admin' 
-                        ? 'bg-amber-950/70 text-amber-300 border border-amber-800/60'
-                        : 'bg-emerald-950/70 text-emerald-300 border border-emerald-800/60'
-                    }`}>
-                      {link.badge}
-                    </span>
-                  )}
+                  {Icon && <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />}
+                  <span>{link.name}</span>
                 </Link>
               );
             })}
+
+            {/* Portals Dropdown (Keeps navbar completely clean) */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPortalsOpen(!portalsOpen)}
+                onBlur={() => setTimeout(() => setPortalsOpen(false), 200)}
+                className={`px-3 py-2 rounded-lg text-xs font-semibold tracking-wide transition flex items-center gap-1 text-slate-600 hover:text-blue-600 hover:bg-slate-50 ${
+                  pathname === '/portal' || pathname === '/cms' ? 'text-blue-700 bg-blue-50 font-bold' : ''
+                }`}
+              >
+                <span>Portales</span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+
+              {portalsOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-xl py-2 z-50 animate-in fade-in zoom-in-95">
+                  <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Accesos Privados
+                  </div>
+                  {portalLinks.map((portal) => {
+                    const Icon = portal.icon;
+                    return (
+                      <Link
+                        key={portal.name}
+                        href={portal.href}
+                        className="flex items-center justify-between px-3.5 py-2 text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4 text-blue-600" />
+                          <span>{portal.name}</span>
+                        </div>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
+                          {portal.badge}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </nav>
 
-          {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Action Buttons (Right) */}
+          <div className="hidden sm:flex items-center gap-2.5">
             <a
               href={whatsappDirect}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold bg-emerald-600/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-600/30 transition"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 hover:text-emerald-800 transition shadow-xs"
+              title="Contacto directo por WhatsApp"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>WhatsApp Directo</span>
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+              <span>WhatsApp</span>
             </a>
 
             <Link
               href="/inspeccion"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 hover:from-amber-500 hover:to-amber-400 shadow-sm transition"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-600/20 transition-all transform hover:-translate-y-0.5"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Agendar Inspección</span>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile hamburger menu */}
           <div className="flex lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+              aria-label="Abrir menú"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -126,8 +164,8 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="lg:hidden bg-[#0c1527] border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
-          {navLinks.map((link) => {
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-lg animate-in slide-in-from-top-2">
+          {mainLinks.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;
             return (
@@ -135,42 +173,60 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium ${
+                className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg text-xs font-semibold ${
                   isActive
-                    ? 'bg-slate-800 text-amber-400 border border-amber-500/30'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200'
+                    : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  {Icon && <Icon className="w-4 h-4 text-slate-400" />}
-                  <span>{link.name}</span>
-                </div>
-                {link.badge && (
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300">
-                    {link.badge}
-                  </span>
-                )}
+                {Icon && <Icon className="w-4 h-4 text-blue-600" />}
+                <span>{link.name}</span>
               </Link>
             );
           })}
+
+          <div className="pt-2 border-t border-slate-100">
+            <div className="px-3.5 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              Áreas Privadas
+            </div>
+            {portalLinks.map((portal) => {
+              const Icon = portal.icon;
+              return (
+                <Link
+                  key={portal.name}
+                  href={portal.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between px-3.5 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+                >
+                  <div className="flex items-center gap-2">
+                    <Icon className="w-4 h-4 text-blue-600" />
+                    <span>{portal.name}</span>
+                  </div>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
+                    {portal.badge}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
 
           <div className="pt-4 flex flex-col gap-2">
             <a
               href={whatsappDirect}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-semibold bg-emerald-600/20 text-emerald-300 border border-emerald-500/40"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>Contactar por WhatsApp</span>
             </a>
             <Link
               href="/inspeccion"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold bg-amber-500 text-slate-950"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-sm"
             >
               <ShieldCheck className="w-4 h-4" />
-              <span>Agendar Inspección PPI</span>
+              <span>Agendar Inspección PPI in situ</span>
             </Link>
           </div>
         </div>
