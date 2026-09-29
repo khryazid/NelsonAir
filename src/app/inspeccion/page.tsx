@@ -73,7 +73,7 @@ function InspeccionForm() {
   };
 
   const whatsappDirect = buildWhatsAppLink(
-    `Hola Cap. Abg. Nelson, deseo coordinar con urgencia una inspección técnica y peritaje legal (PPI) para la aeronave matrícula ${formData.aircraftRegistration || 'por definir'} en el aeropuerto ${formData.hangarAirport}.`
+    `Hola Cap. Abg. Nelson Sánchez, deseo coordinar con urgencia una inspección técnica y peritaje legal (PPI) para la aeronave matrícula ${formData.aircraftRegistration || 'por definir'} en el aeropuerto ${formData.hangarAirport}.`
   );
 
   return (
@@ -115,7 +115,7 @@ function InspeccionForm() {
             Solicitud de Inspección PPI Recibida
           </h3>
           <p className="text-slate-600 text-sm mt-3 max-w-lg mx-auto">
-            Hemos registrado los datos de la aeronave <strong>{formData.aircraftRegistration}</strong> en {formData.hangarAirport}. El Cap. Abg. Nelson se comunicará de inmediato para coordinar el acceso al hangar y la revisión de bitácoras.
+            Hemos registrado los datos de la aeronave <strong>{formData.aircraftRegistration}</strong> en {formData.hangarAirport}. El Cap. Abg. Nelson Sánchez se comunicará de inmediato para coordinar el acceso al hangar y la revisión de bitácoras.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -7,13 +7,11 @@ import {
   ShieldCheck, 
   Scale, 
   Wrench, 
-  Calculator, 
   CheckCircle2, 
   ArrowRight, 
   MessageSquare, 
   Award, 
-  ChevronRight,
-  Sparkles
+  ChevronRight
 } from 'lucide-react';
 import { AircraftCard } from '@/components/AircraftCard';
 import { AircraftDetailModal } from '@/components/AircraftDetailModal';
@@ -29,7 +27,7 @@ export default function HomePage() {
   const featuredAircraft = INITIAL_AIRCRAFT.slice(0, 3);
 
   const whatsappHeroUrl = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
+    'Hola Cap. Abg. Nelson Sánchez, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
   );
 
   return (
@@ -42,17 +40,17 @@ export default function HomePage() {
       />
 
       {/* Hero Section: Luminous Aviation White & Sky Blue */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-blue-50/60 via-white to-slate-50 bg-radar-grid overflow-hidden border-b border-slate-200/80">
+      <section className="relative min-h-[82vh] flex items-center justify-center bg-gradient-to-b from-blue-50/70 via-white to-slate-50 bg-radar-grid overflow-hidden border-b border-slate-200/80">
         
         {/* Soft atmospheric blue glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-blue-200/40 via-sky-100/50 to-transparent blur-3xl pointer-events-none rounded-full" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-blue-200/35 via-sky-100/40 to-transparent blur-3xl pointer-events-none rounded-full" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10 text-center">
           
           {/* Pilot-Lawyer Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6 shadow-xs">
             <Plane className="w-3.5 h-3.5 transform -rotate-45 text-blue-600" />
-            <span>Abogado Mercantil & Aeronáutico • Piloto Comercial Activo</span>
+            <span>Cap. Abg. Nelson Sánchez • Abogado & Piloto Comercial Activo</span>
           </div>
 
           {/* Main Headline */}
@@ -181,7 +179,7 @@ export default function HomePage() {
                 </p>
               </div>
               <a
-                href={buildWhatsAppLink('Hola Cap. Abg. Nelson, requiero gestionar trámites ante el INAC.')}
+                href={buildWhatsAppLink('Hola Cap. Abg. Nelson Sánchez, requiero gestionar trámites ante el INAC.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 text-xs text-sky-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
@@ -355,7 +353,7 @@ export default function HomePage() {
                     <Plane className="w-10 h-10 transform -rotate-45" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold">Cap. Abg. Nelson R.</h3>
+                    <h3 className="text-base font-bold">Cap. Abg. Nelson Sánchez</h3>
                     <p className="text-xs text-sky-200 font-semibold">Abogado Aeronáutico & Mercantil (29 años)</p>
                     <p className="text-[11px] text-slate-300 mt-1">Piloto Comercial CPL con habilitación Multimotor e IFR</p>
                   </div>

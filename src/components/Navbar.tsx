@@ -6,14 +6,12 @@ import { usePathname } from 'next/navigation';
 import { 
   ShieldCheck, 
   Plane, 
-  Calculator, 
-  Lock, 
   Menu, 
   X, 
   MessageSquare,
-  Compass,
-  Briefcase,
-  ChevronDown
+  ChevronDown,
+  Lock,
+  Briefcase
 } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/utils';
 
@@ -24,10 +22,10 @@ export function Navbar() {
 
   const mainLinks = [
     { name: 'Inicio', href: '/' },
-    { name: 'Catálogo', href: '/brokerage', icon: Plane },
-    { name: 'Inspección PPI', href: '/inspeccion', icon: ShieldCheck },
-    { name: 'Calculadora', href: '/calculadora', icon: Calculator },
-    { name: 'Off-Market', href: '/off-market', icon: Compass },
+    { name: 'Catálogo', href: '/brokerage' },
+    { name: 'Inspección PPI', href: '/inspeccion' },
+    { name: 'Calculadora', href: '/calculadora' },
+    { name: 'Off-Market', href: '/off-market' },
   ];
 
   const portalLinks = [
@@ -36,63 +34,61 @@ export function Navbar() {
   ];
 
   const whatsappDirect = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
+    'Hola Cap. Abg. Nelson Sánchez, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
   );
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 gap-4">
           
           {/* Brand Logo & Authority */}
           <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-500 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-500 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform shrink-0">
               <Plane className="w-5 h-5 transform -rotate-45" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-left">
               <div className="flex items-center gap-2">
-                <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
-                  NELSON R.
+                <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                  NELSON SÁNCHEZ
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/80 uppercase tracking-wider">
-                  Pilot-Lawyer
+                <span className="hidden sm:inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider whitespace-nowrap">
+                  PILOT-LAWYER
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium tracking-wide">
+              <p className="text-[11px] text-slate-500 font-medium tracking-wide whitespace-nowrap">
                 Derecho Aeronáutico & Mercantil • Brokerage
               </p>
             </div>
           </Link>
 
-          {/* Desktop Navigation (Concise, Clean & Spacious) */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          {/* Desktop Navigation Links (Single-line, pristine horizontal alignment, no wrapping) */}
+          <nav className="hidden xl:flex items-center space-x-1 lg:space-x-1.5 shrink-0">
             {mainLinks.map((link) => {
               const isActive = pathname === link.href;
-              const Icon = link.icon;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-wide whitespace-nowrap transition-all ${
                     isActive
-                      ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200/70 shadow-xs'
+                      ? 'bg-blue-50 text-blue-700 shadow-2xs border border-blue-200/80'
                       : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'
                   }`}
                 >
-                  {Icon && <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />}
-                  <span>{link.name}</span>
+                  {link.name}
                 </Link>
               );
             })}
 
-            {/* Portals Dropdown (Keeps navbar completely clean) */}
+            {/* Portals Dropdown */}
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setPortalsOpen(!portalsOpen)}
                 onBlur={() => setTimeout(() => setPortalsOpen(false), 200)}
-                className={`px-3 py-2 rounded-lg text-xs font-semibold tracking-wide transition flex items-center gap-1 text-slate-600 hover:text-blue-600 hover:bg-slate-50 ${
-                  pathname === '/portal' || pathname === '/cms' ? 'text-blue-700 bg-blue-50 font-bold' : ''
+                className={`px-3 py-2 rounded-xl text-xs font-bold tracking-wide whitespace-nowrap transition flex items-center gap-1 text-slate-600 hover:text-blue-600 hover:bg-slate-50 ${
+                  pathname === '/portal' || pathname === '/cms' ? 'text-blue-700 bg-blue-50 font-black' : ''
                 }`}
               >
                 <span>Portales</span>
@@ -100,8 +96,8 @@ export function Navbar() {
               </button>
 
               {portalsOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-xl py-2 z-50 animate-in fade-in zoom-in-95">
-                  <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in zoom-in-95">
+                  <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     Accesos Privados
                   </div>
                   {portalLinks.map((portal) => {
@@ -110,13 +106,13 @@ export function Navbar() {
                       <Link
                         key={portal.name}
                         href={portal.href}
-                        className="flex items-center justify-between px-3.5 py-2 text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
+                        className="flex items-center justify-between px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
                       >
                         <div className="flex items-center gap-2">
                           <Icon className="w-4 h-4 text-blue-600" />
                           <span>{portal.name}</span>
                         </div>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-bold">
                           {portal.badge}
                         </span>
                       </Link>
@@ -127,14 +123,39 @@ export function Navbar() {
             </div>
           </nav>
 
-          {/* Action Buttons (Right) */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          {/* Action CTAs (Right side) */}
+          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
+            {/* Portales button for lg screens when xl is not reached */}
+            <div className="xl:hidden relative">
+              <button
+                type="button"
+                onClick={() => setPortalsOpen(!portalsOpen)}
+                onBlur={() => setTimeout(() => setPortalsOpen(false), 200)}
+                className="px-3 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 border border-slate-200 flex items-center gap-1 whitespace-nowrap"
+              >
+                <span>Portales</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              {portalsOpen && (
+                <div className="absolute right-0 mt-2 w-52 bg-white border border-slate-200 rounded-2xl shadow-xl py-2 z-50">
+                  {portalLinks.map((portal) => (
+                    <Link
+                      key={portal.name}
+                      href={portal.href}
+                      className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+                    >
+                      {portal.name} ({portal.badge})
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <a
               href={whatsappDirect}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 hover:text-emerald-800 transition shadow-xs"
-              title="Contacto directo por WhatsApp"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 hover:text-emerald-800 transition whitespace-nowrap shadow-2xs"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
               <span>WhatsApp</span>
@@ -142,80 +163,75 @@ export function Navbar() {
 
             <Link
               href="/inspeccion"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-600/20 transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-600/25 transition whitespace-nowrap transform hover:-translate-y-0.5"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Agendar Inspección</span>
             </Link>
           </div>
 
-          {/* Mobile hamburger menu */}
-          <div className="flex lg:hidden">
+          {/* Mobile menu trigger */}
+          <div className="flex xl:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+              className="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none border border-slate-200"
               aria-label="Abrir menú"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-lg animate-in slide-in-from-top-2">
+        <div className="xl:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top-2">
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1">
+            Navegación Principal
+          </div>
           {mainLinks.map((link) => {
             const isActive = pathname === link.href;
-            const Icon = link.icon;
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg text-xs font-semibold ${
+                className={`block px-3.5 py-2.5 rounded-xl text-xs font-bold ${
                   isActive
-                    ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200'
+                    ? 'bg-blue-50 text-blue-700 border border-blue-200'
                     : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
-                {Icon && <Icon className="w-4 h-4 text-blue-600" />}
-                <span>{link.name}</span>
+                {link.name}
               </Link>
             );
           })}
 
-          <div className="pt-2 border-t border-slate-100">
-            <div className="px-3.5 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              Áreas Privadas
+          <div className="pt-3 border-t border-slate-100 space-y-1">
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1">
+              Portales Privados
             </div>
-            {portalLinks.map((portal) => {
-              const Icon = portal.icon;
-              return (
-                <Link
-                  key={portal.name}
-                  href={portal.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between px-3.5 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700"
-                >
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-blue-600" />
-                    <span>{portal.name}</span>
-                  </div>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
-                    {portal.badge}
-                  </span>
-                </Link>
-              );
-            })}
+            {portalLinks.map((portal) => (
+              <Link
+                key={portal.name}
+                href={portal.href}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+              >
+                <span>{portal.name}</span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">
+                  {portal.badge}
+                </span>
+              </Link>
+            ))}
           </div>
 
-          <div className="pt-4 flex flex-col gap-2">
+          <div className="pt-4 flex flex-col gap-2.5">
             <a
               href={whatsappDirect}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"
             >
               <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>Contactar por WhatsApp</span>
@@ -223,7 +239,7 @@ export function Navbar() {
             <Link
               href="/inspeccion"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-sm"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-xs font-black bg-blue-600 text-white shadow-sm"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Agendar Inspección PPI in situ</span>

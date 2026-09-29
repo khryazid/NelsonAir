@@ -11,7 +11,10 @@ import { SAMPLE_PPI_REPORT } from '@/lib/data-store';
 import { formatDate } from '@/lib/utils';
 
 export function PpiReportGenerator() {
-  const [report, setReport] = useState<PpiReport>(SAMPLE_PPI_REPORT);
+  const [report, setReport] = useState<PpiReport>({
+    ...SAMPLE_PPI_REPORT,
+    inspector_name: 'Cap. Abg. Nelson Sánchez (Piloto Comercial CPL / Abg. Aeronáutico)'
+  });
   const [isEditing, setIsEditing] = useState(false);
 
   const handlePrint = () => {
@@ -141,7 +144,7 @@ export function PpiReportGenerator() {
                 DESPACHO AERONÁUTICO & MERCANTIL
               </h1>
               <p className="text-xs font-bold text-blue-700 tracking-wider uppercase">
-                Cap. Abg. Nelson R. • Peritaje Técnico & Blindaje Jurídico
+                Cap. Abg. Nelson Sánchez • Peritaje Técnico & Blindaje Jurídico
               </p>
               <p className="text-[11px] text-slate-500">
                 Caracas, Venezuela • Operaciones SVCS / SVMI / SVFM • Multijurisdicción INAC & FAA

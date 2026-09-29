@@ -1,6 +1,6 @@
 # 📋 Guía de Tareas Pendientes para el Usuario (`taskUser.md`)
 
-Este documento detalla todas las acciones, configuraciones y pasos que debes realizar para poner en marcha la **Plataforma Integral del Despacho Aeronáutico & Brokerage (Cap. Abg. Nelson R.)**.
+Este documento detalla todas las acciones, configuraciones y pasos que debes realizar para poner en marcha la **Plataforma Integral del Despacho Aeronáutico & Brokerage (Cap. Abg. Nelson Sánchez)**.
 
 ---
 

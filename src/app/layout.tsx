@@ -19,10 +19,11 @@ const interMono = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Cap. Abg. Nelson R. | Derecho Aeronáutico, Brokerage & Peritaje in situ',
+  title: 'Cap. Abg. Nelson Sánchez | Derecho Aeronáutico, Brokerage & Peritaje in situ',
   description:
     'Plataforma integral de derecho aeronáutico y mercantil en Caracas, Venezuela (SVCS, SVMI, SVFM). Inspección técnica de aeronaves al mando de un piloto comercial + blindaje jurídico registral INAC / FAA sin intermediarios.',
   keywords: [
+    'Nelson Sanchez Abogado Aeronautico',
     'Abogado Aeronáutico Venezuela',
     'Peritaje Aeronave Caracas',
     'Pre-Purchase Inspection PPI Charallave SVCS',
@@ -32,9 +33,9 @@ export const metadata: Metadata = {
     'Aeronaves en Venta Venezuela King Air Citation',
     'Administración Aeronáutica Turn-Key'
   ],
-  authors: [{ name: 'Cap. Abg. Nelson R.' }],
+  authors: [{ name: 'Cap. Abg. Nelson Sánchez' }],
   openGraph: {
-    title: 'Cap. Abg. Nelson R. | Derecho Aeronáutico & Brokerage',
+    title: 'Cap. Abg. Nelson Sánchez | Derecho Aeronáutico & Brokerage',
     description:
       'Inspección técnica al mando de un piloto + blindaje legal mercantil y aeronáutico. Caracas, Venezuela.',
     type: 'website',

@@ -52,7 +52,7 @@ export function OwnerDashboard({
   };
 
   const whatsappManagerUrl = buildWhatsAppLink(
-    `Hola Cap. Abg. Nelson, como propietario de la aeronave ${currentAircraft?.registration_mark}, solicito coordinar un trámite / servicio.`
+    `Hola Cap. Abg. Nelson Sánchez, como propietario de la aeronave ${currentAircraft?.registration_mark}, solicito coordinar un trámite / servicio.`
   );
 
   return (

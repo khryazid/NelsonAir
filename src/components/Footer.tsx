@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { Plane, ShieldCheck, MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Plane, MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/utils';
 
 export function Footer() {
   const whatsappUrl = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson, deseo realizar una consulta jurídica o técnica.'
+    'Hola Cap. Abg. Nelson Sánchez, deseo realizar una consulta jurídica o técnica.'
   );
 
   return (
@@ -22,7 +22,7 @@ export function Footer() {
               <span>DESPACHO AERONÁUTICO</span>
             </div>
             <p className="text-slate-500 leading-relaxed text-[12px]">
-              Asesoría legal mercantil & aeronáutica integral, peritaje técnico in situ y corretaje exclusivo al mando de un abogado y piloto comercial activo.
+              Asesoría legal mercantil & aeronáutica integral, peritaje técnico in situ y corretaje exclusivo al mando del <strong>Cap. Abg. Nelson Sánchez</strong> (piloto comercial activo y abogado especialista).
             </p>
             <div className="text-[11px] text-blue-700 font-semibold pt-1">
               • Caracas, Venezuela • Multijurisdicción YV (INAC) / FAA N-Number
@@ -118,7 +118,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-2 text-slate-600 text-[12px]">
                 <Mail className="w-4 h-4 text-blue-600" />
-                <span>contacto@abogadoaeronautico.com</span>
+                <span>nelson.sanchez@abogadoaeronautico.com</span>
               </div>
             </div>
             <div className="pt-2">
@@ -138,7 +138,7 @@ export function Footer() {
         {/* Legal Disclaimer & Copyright */}
         <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <p>
-            © {new Date().getFullYear()} Despacho Legal Aeronáutico & Mercantil. Todos los derechos reservados.
+            © {new Date().getFullYear()} Cap. Abg. Nelson Sánchez • Despacho Legal Aeronáutico & Mercantil. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Regulado bajo Normativa Técnica INAC & FAA</span>

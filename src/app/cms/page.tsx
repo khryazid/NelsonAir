@@ -593,7 +593,7 @@ export default function CmsPage() {
                 <tbody className="divide-y divide-slate-100">
                   {leadsList.map((lead) => {
                     const leadWhatsApp = buildWhatsAppLink(
-                      `Estimado ${lead.full_name || 'cliente'}, le escribe el Cap. Abg. Nelson R. respecto a su mandato de búsqueda de aeronave en nuestra plataforma.`
+                      `Estimado ${lead.full_name || 'cliente'}, le escribe el Cap. Abg. Nelson Sánchez respecto a su mandato de búsqueda de aeronave en nuestra plataforma.`
                     );
 
                     return (
@@ -711,7 +711,7 @@ export default function CmsPage() {
 
                       <td className="p-4 text-right">
                         <a
-                          href={buildWhatsAppLink(`Estimado ${insp.client_name}, le contacta el Cap. Abg. Nelson respecto a la inspección PPI de la aeronave ${insp.aircraft_registration}.`)}
+                          href={buildWhatsAppLink(`Estimado ${insp.client_name}, le contacta el Cap. Abg. Nelson Sánchez respecto a la inspección PPI de la aeronave ${insp.aircraft_registration}.`)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold"
