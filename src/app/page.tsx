@@ -17,6 +17,7 @@ import { AircraftCard } from '@/components/AircraftCard';
 import { AircraftDetailModal } from '@/components/AircraftDetailModal';
 import { CostCalculator } from '@/components/CostCalculator';
 import { OffMarketAlerts } from '@/components/OffMarketAlerts';
+import { InteractivePillars } from '@/components/InteractivePillars';
 import { INITIAL_AIRCRAFT } from '@/lib/data-store';
 import { Aircraft } from '@/lib/types';
 import { buildWhatsAppLink } from '@/lib/utils';
@@ -126,116 +127,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section: Trámites, Peritaje, Brokerage, Administración */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold text-blue-700 uppercase tracking-widest block mb-2">
-              Soluciones Integrales
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              Los 4 Pilares del Servicio Aeronáutico
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base mt-3">
-              Combinamos el rigor del derecho mercantil y aeronáutico con la experiencia práctica en la cabina de mando.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            {/* Pilar 1: Peritaje & PPI */}
-            <div className="bg-white border border-slate-200 hover:border-blue-400 p-6 rounded-3xl transition duration-300 flex flex-col justify-between group shadow-xs hover:shadow-md">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 mb-5 group-hover:scale-105 transition">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  Inspección Pre-Compra (PPI) in situ
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Inspección técnica directa en hangar: revisión de célula, boroscopia de motores, prueba en tierra (run-up), vuelo de prueba y verificación de títulos libres de gravámenes ante el INAC y FAA.
-                </p>
-              </div>
-              <Link
-                href="/inspeccion"
-                className="mt-6 text-xs text-blue-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
-              >
-                <span>Solicitar Peritaje en Hangar</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Pilar 2: Trámites ante el INAC */}
-            <div className="bg-white border border-slate-200 hover:border-blue-400 p-6 rounded-3xl transition duration-300 flex flex-col justify-between group shadow-xs hover:shadow-md">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-600 mb-5 group-hover:scale-105 transition">
-                  <Scale className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  Gestoría Jurídica ante el INAC
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Traspasos de aeronaves, reserva y cambio de matrículas YV/YV-E, permisos de sobrevuelo y aterrizaje nacional e internacional, y renovación de Certificados de Aeronavegabilidad.
-                </p>
-              </div>
-              <a
-                href={buildWhatsAppLink('Hola equipo de AeroLex Global, requiero gestionar trámites ante el INAC.')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 text-xs text-sky-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
-              >
-                <span>Consultar Trámites INAC</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Pilar 3: Brokerage & Mandatos */}
-            <div className="bg-white border border-slate-200 hover:border-blue-400 p-6 rounded-3xl transition duration-300 flex flex-col justify-between group shadow-xs hover:shadow-md">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 mb-5 group-hover:scale-105 transition">
-                  <Plane className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  Brokerage & Compraventa Blindada
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Búsqueda calificada de aeronaves en venta y colocación de inventario exclusivo. Redacción de contratos de opción de compraventa mercantil, retención en escrow y cierre sin riesgos.
-                </p>
-              </div>
-              <Link
-                href="/brokerage"
-                className="mt-6 text-xs text-indigo-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
-              >
-                <span>Ver Catálogo de Aeronaves</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Pilar 4: Administración Integral */}
-            <div className="bg-white border border-slate-200 hover:border-blue-400 p-6 rounded-3xl transition duration-300 flex flex-col justify-between group shadow-xs hover:shadow-md">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 mb-5 group-hover:scale-105 transition">
-                  <Wrench className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  Administración Aeronáutica Turn-Key
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Por una tarifa mensual nos encargamos de que su aeronave se mantenga en condiciones óptimas: control de horas, seguros de casco y RC, mantenimientos de 100 horas y reportes mensuales.
-                </p>
-              </div>
-              <Link
-                href="/calculadora"
-                className="mt-6 text-xs text-cyan-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
-              >
-                <span>Calcular Costo de Gestión</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* Services Section: Interactive Pillars Showcase */}
+      <InteractivePillars />
 
       {/* Featured Aircraft Catalog Section */}
       <section className="py-20 bg-white border-b border-slate-200">
