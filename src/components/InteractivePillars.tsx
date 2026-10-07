@@ -9,672 +9,505 @@ import {
   Wrench,
   CheckCircle2,
   ArrowRight,
-  ChevronRight,
-  FileCheck,
   Sparkles,
   Lock,
   Clock,
   Activity,
+  FileCheck,
   AlertTriangle,
   BadgeCheck,
-  Search,
-  ExternalLink,
-  ChevronDown
+  ChevronRight,
+  TrendingDown,
+  FileText,
+  Radio,
+  Sliders,
+  DollarSign
 } from 'lucide-react';
 import { buildWhatsAppLink } from '@/lib/utils';
 
-interface PillarData {
+interface Pillar {
   id: string;
-  badge: string;
+  number: string;
   title: string;
-  shortDesc: string;
+  shortSubtitle: string;
   tagline: string;
   icon: React.ComponentType<{ className?: string }>;
-  color: {
-    bg: string;
-    border: string;
-    text: string;
-    lightBg: string;
-    badgeBg: string;
-    ring: string;
-    gradient: string;
-  };
-  cta: {
-    text: string;
-    href: string;
-    isExternal?: boolean;
-  };
-  features: string[];
-  interactiveDemo: {
-    title: string;
-    subtitle: string;
-    metrics: { label: string; value: string; detail: string }[];
-    stepsOrItems: {
-      phase: string;
-      title: string;
-      description: string;
-      status: string;
-    }[];
-    verdict: string;
-  };
+  accentColor: string;
+  glowColor: string;
+  badge: string;
+  ctaText: string;
+  ctaHref: string;
+  isExternal?: boolean;
+  highlightPoints: string[];
 }
 
-const PILLARS: PillarData[] = [
+const PILLARS: Pillar[] = [
   {
     id: 'ppi',
-    badge: 'Pilar 01 • Peritaje Técnico',
+    number: '01',
     title: 'Inspección Pre-Compra (PPI) in situ',
-    shortDesc:
-      'Revisión física exhaustiva en hangar: célula, boroscopia, run-up de motores, prueba en vuelo al mando y auditoría documental registral.',
-    tagline: 'Peritaje al mando de un piloto con ojos técnicos y firma legal colegiada',
+    shortSubtitle: 'Peritaje Técnico & Boroscopia en Hangar',
+    tagline: 'Inspección técnica al mando de un piloto con ojos mecánicos y firma legal colegiada.',
     icon: ShieldCheck,
-    color: {
-      bg: 'bg-blue-600',
-      border: 'border-blue-500',
-      text: 'text-blue-700',
-      lightBg: 'bg-blue-50',
-      badgeBg: 'bg-blue-100 text-blue-800 border-blue-200',
-      ring: 'ring-blue-500/20',
-      gradient: 'from-blue-600 to-sky-600',
-    },
-    cta: {
-      text: 'Agendar Inspección PPI en Hangar',
-      href: '/inspeccion',
-    },
-    features: [
-      'Boroscopia digital de motores (PT6A, TSIO, Continental, Williams)',
-      'Medición de corrosión ultrasónica en largueros principales',
-      'Vuelo de prueba al mando evaluando presurización, autopiloto y climb rate',
-      'Auditoría registral completa de títulos, prendas y ADs vigentes ante INAC & FAA',
-    ],
-    interactiveDemo: {
-      title: 'Simulador de Auditoría Pericial PPI',
-      subtitle: 'Protocolo de 4 Fases ejecutado in situ en hangares de Caracas (SVCS, SVMI, SVFM)',
-      metrics: [
-        { label: 'Puntos Verificados', value: '48 Ítems', detail: 'Checklist exhaustivo de célula y aviónica' },
-        { label: 'Tiempo de Ejecución', value: '24-48 hrs', detail: 'Dictamen preliminar el mismo día' },
-        { label: 'Riesgo Mitigado', value: '100% Blindado', detail: 'Sin compras a ciegas ni vicios ocultos' },
-      ],
-      stepsOrItems: [
-        {
-          phase: 'Fase 1',
-          title: 'Célula & Estructura',
-          description: 'Inspección boroscópica en bahías de tren, inspección de remaches, largueros y control de corrosión oculta.',
-          status: 'Aprobado • Sin Daños',
-        },
-        {
-          phase: 'Fase 2',
-          title: 'Planta Motriz & Run-Up',
-          description: 'Prueba de compresión diferencial en frío y caliente. Parámetros ITT de turbina, corte de magnetos y filtro SOAP.',
-          status: 'En Tolerancia Fabricante',
-        },
-        {
-          phase: 'Fase 3',
-          title: 'Vuelo de Prueba Funcional',
-          description: 'Comportamiento en crucero: tasa de ascenso, pruebas de autopiloto, presurización diferencial y aviónica IFR Garmin.',
-          status: 'Parámetros Nominales',
-        },
-        {
-          phase: 'Fase 4',
-          title: 'Auditoría Registral INAC/FAA',
-          description: 'Cotejo de bitácoras originales con el Registro Aeronáutico. Certificación de título libre de gravámenes (Clear Title).',
-          status: 'Título Libre de Gravamen',
-        },
-      ],
-      verdict: 'Apto para Adquisición con Dictamen Legal y Técnico Vinculante',
-    },
+    accentColor: 'text-blue-400',
+    glowColor: 'from-blue-600/30 to-sky-500/10',
+    badge: 'Pilar 01 • Peritaje Técnico',
+    ctaText: 'Agendar Inspección PPI en Hangar',
+    ctaHref: '/inspeccion',
+    highlightPoints: [
+      'Boroscopia en caliente en turbinas PT6A / TSIO / Continental',
+      'Medición de corrosión ultrasónica en largueros y tren',
+      'Vuelo de prueba al mando evaluando presurización e IFR',
+      'Auditoría documental: Clear Title y ADs ante INAC & FAA'
+    ]
   },
   {
     id: 'inac',
-    badge: 'Pilar 02 • Blindaje Legal',
+    number: '02',
     title: 'Gestoría Jurídica ante el INAC',
-    shortDesc:
-      'Traspasos de aeronaves, asignación y cambio de matrículas YV/YV-E, permisos de sobrevuelo y renovación de Certificados de Aeronavegabilidad.',
-    tagline: 'Solvencia ante el Registro Aeronáutico Nacional sin trabas burocráticas',
+    shortSubtitle: 'Blindaje Registral & Mercantil en Venezuela',
+    tagline: 'Traspasos, reserva de matrículas YV y certificación sin trabas burocráticas ni riesgos.',
     icon: Scale,
-    color: {
-      bg: 'bg-sky-600',
-      border: 'border-sky-500',
-      text: 'text-sky-700',
-      lightBg: 'bg-sky-50',
-      badgeBg: 'bg-sky-100 text-sky-800 border-sky-200',
-      ring: 'ring-sky-500/20',
-      gradient: 'from-sky-600 to-cyan-600',
-    },
-    cta: {
-      text: 'Consultar Trámites INAC por WhatsApp',
-      href: buildWhatsAppLink('Hola equipo de AeroLex Global, requiero gestionar trámites ante el INAC.'),
-      isExternal: true,
-    },
-    features: [
-      'Redacción y visado de contratos mercantiles de compraventa protocolizados',
-      'Inscripción de hipotecas aeronáuticas, prendas y levantamiento de gravámenes',
-      'Permisos de sobrevuelo y aterrizaje nacional e internacional (vuelos ferry)',
-      'Tramitación expedita de Certificado de Aeronavegabilidad ordinario y de exportación',
-    ],
-    interactiveDemo: {
-      title: 'Flujo Expedito de Regularización Registral',
-      subtitle: 'Ruta legal segura para garantizar la propiedad irrevocable de la aeronave',
-      metrics: [
-        { label: 'Eficacia Registral', value: '100% Legal', detail: 'Cumplimiento RAV 45, RAV 47 y Código de Comercio' },
-        { label: 'Jurisdicciones', value: 'INAC & FAA', detail: 'Manejo dual de matrículas YV y N-Number' },
-        { label: 'Respaldo', value: 'Notarial & RAN', detail: 'Protocolización con firma de abogado colegiado' },
-      ],
-      stepsOrItems: [
-        {
-          phase: 'Etapa 1',
-          title: 'Auditoría Registral Previa',
-          description: 'Verificación del historial de dominio en el Registro Aeronáutico Nacional (RAN) para descartar medidas cautelares.',
-          status: 'Libre de Medidas Cautelares',
-        },
-        {
-          phase: 'Etapa 2',
-          title: 'Documento Mercantil Notariado',
-          description: 'Redacción de contrato de opción o compraventa con cláusulas de protección patrimonial y resolución de disputas.',
-          status: 'Visado por Especialista',
-        },
-        {
-          phase: 'Etapa 3',
-          title: 'Inscripción en el INAC',
-          description: 'Ingreso del expediente ante la Dirección de Registro Aeronáutico para la emisión de la Cédula de Matrícula.',
-          status: 'Trámite Prioritario',
-        },
-        {
-          phase: 'Etapa 4',
-          title: 'Aeronavegabilidad & Permisos',
-          description: 'Gestión técnica y jurídica del Certificado de Aeronavegabilidad y asignación de códigos transponder asignados.',
-          status: 'Aeronave Lista para Operar',
-        },
-      ],
-      verdict: 'Protección Jurídica Total: Ninguna transacción se cierra sin Clear Title confirmado',
-    },
+    accentColor: 'text-sky-400',
+    glowColor: 'from-sky-600/30 to-blue-500/10',
+    badge: 'Pilar 02 • Blindaje Jurídico',
+    ctaText: 'Consultar Trámites INAC por WhatsApp',
+    ctaHref: buildWhatsAppLink('Hola equipo de AeroLex Global, requiero gestionar trámites ante el INAC.'),
+    isExternal: true,
+    highlightPoints: [
+      'Contratos de compraventa mercantil protocolizados en Notaría',
+      'Inscripción de hipotecas aeronáuticas y levantamiento de gravámenes',
+      'Permisos de sobrevuelo y aterrizaje nacional e internacional (Ferry)',
+      'Renovación expedita de Certificado de Aeronavegabilidad'
+    ]
   },
   {
     id: 'brokerage',
-    badge: 'Pilar 03 • Transacciones Seguras',
+    number: '03',
     title: 'Brokerage & Compraventa Blindada',
-    shortDesc:
-      'Búsqueda calificada off-market, colocación de inventario exclusivo, contratos con cláusula de escape y depósito protegido en cuenta Escrow.',
-    tagline: 'Transacciones de alto patrimonio donde su dinero y su inversión nunca quedan expuestos',
+    shortSubtitle: 'Adquisición Off-Market & Fondos en Escrow',
+    tagline: 'Transacciones donde su patrimonio nunca queda expuesto al cierre.',
     icon: Plane,
-    color: {
-      bg: 'bg-indigo-600',
-      border: 'border-indigo-500',
-      text: 'text-indigo-700',
-      lightBg: 'bg-indigo-50',
-      badgeBg: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      ring: 'ring-indigo-500/20',
-      gradient: 'from-indigo-600 to-blue-700',
-    },
-    cta: {
-      text: 'Explorar Catálogo de Aeronaves',
-      href: '/brokerage',
-    },
-    features: [
-      'Acceso exclusivo a inventario privado off-market no visible en portales públicos',
-      'Estructuración de contratos de opción de compraventa condicionados a resultado satisfactorio del PPI',
-      'Custodia segura del depósito de arras en cuentas Escrow (EE.UU. / Panamá / Suiza)',
-      'Supervisión y cierre formal simultáneo: desembolso solo contra entrega de bitácoras originales',
-    ],
-    interactiveDemo: {
-      title: 'Comparativa de Seguridad: Compra Tradicional vs AeroLex Global',
-      subtitle: 'Cómo transformamos una compra de alto riesgo en un proceso transparente y sin sorpresas',
-      metrics: [
-        { label: 'Tasa de Éxito', value: '100% Cierres Limpios', detail: 'Sin disputas post-venta ni reclamos judiciales' },
-        { label: 'Protección de Fondo', value: 'Escrow Garantizado', detail: 'Depósito resguardado hasta conformidad del PPI' },
-        { label: 'Ahorro en Negociación', value: '8% - 15%', detail: 'Ajuste de precio basado en hallazgos del peritaje' },
-      ],
-      stepsOrItems: [
-        {
-          phase: 'Paso 1',
-          title: 'Mandato de Búsqueda Calificado',
-          description: 'Filtramos cientos de aeronaves descartando aquellas con historial de daños mayores o litigios sucesorales.',
-          status: 'Filtro Confidencial',
-        },
-        {
-          phase: 'Paso 2',
-          title: 'Carta de Intención (LOI) & Escrow',
-          description: 'Fijamos precio y condiciones. El depósito de garantía se deposita en cuenta fideicomiso protegida, nunca en manos del vendedor.',
-          status: 'Fondos Protegidos',
-        },
-        {
-          phase: 'Paso 3',
-          title: 'Peritaje PPI Condicionante',
-          description: 'Si el avión no aprueba la boroscopia o la auditoría de ADs, el comprador puede rescindir el contrato y recuperar el 100% del depósito.',
-          status: 'Cláusula de Salida Segura',
-        },
-        {
-          phase: 'Paso 4',
-          title: 'Closing Day & Entrega de Activo',
-          description: 'Simultáneamente se protocoliza el traspaso notarial, se liberan los fondos y se reciben bitácoras selladas y llaves.',
-          status: 'Propiedad Transferida',
-        },
-      ],
-      verdict: 'Adquisición Transparente: Cero incertidumbre, cero intermediarios especulativos',
-    },
+    accentColor: 'text-indigo-400',
+    glowColor: 'from-indigo-600/30 to-blue-500/10',
+    badge: 'Pilar 03 • Brokerage Blindado',
+    ctaText: 'Explorar Catálogo de Aeronaves',
+    ctaHref: '/brokerage',
+    highlightPoints: [
+      'Acceso exclusivo a inventario privado off-market confidencial',
+      'Contratos de opción condicionados a resultado satisfactorio del PPI',
+      'Custodia del depósito de arras en cuentas Escrow (EE.UU. / Suiza)',
+      'Cierre formal simultáneo: fondos solo contra bitácoras originales'
+    ]
   },
   {
     id: 'management',
-    badge: 'Pilar 04 • Operación Turn-Key',
+    number: '04',
     title: 'Administración Aeronáutica Turn-Key',
-    shortDesc:
-      'Gestión integral llave en mano: control de horas, seguros de casco y RC, mantenimientos de 100 horas y reportes mensuales de gestión de costos.',
-    tagline: 'Usted disfruta volar; nosotros blindamos la operatividad, el mantenimiento y los costos',
+    shortSubtitle: 'Operación, Seguros & Mantenimiento Llave en Mano',
+    tagline: 'Usted disfruta volar; nosotros blindamos la disponibilidad y los costos operativos.',
     icon: Wrench,
-    color: {
-      bg: 'bg-emerald-600',
-      border: 'border-emerald-500',
-      text: 'text-emerald-700',
-      lightBg: 'bg-emerald-50',
-      badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      ring: 'ring-emerald-500/20',
-      gradient: 'from-emerald-600 to-teal-600',
-    },
-    cta: {
-      text: 'Calcular Presupuesto con la Calculadora',
-      href: '/calculadora',
-    },
-    features: [
-      'Monitoreo continuo de horas de célula (TTAF), motores (SMOH) y hélices (SPOH)',
-      'Auditoría y renovación oportuna de pólizas de Casco y Responsabilidad Civil aérea',
-      'Supervisión técnica de inspecciones periódicas de 50h, 100h y anual en talleres certificados OMAC',
-      'Acceso al Portal Privado del Propietario con bóveda documental y reportes de gastos',
-    ],
-    interactiveDemo: {
-      title: 'Panel Operativo de Gestión Integral de Aeronaves',
-      subtitle: 'Simulación del monitoreo continuo para aeronaves basadas en Caracas y el Caribe',
-      metrics: [
-        { label: 'Disponibilidad de Vuelo', value: '99.2%', detail: 'Aeronave siempre con certificaciones al día' },
-        { label: 'Ahorro Operativo', value: '~14% Anual', detail: 'Convenios de combustible y hangaraje en SVCS/SVMI' },
-        { label: 'Bóveda Segura', value: '24/7 Digital', detail: 'Títulos, pólizas y bitácoras en la nube cifrada' },
-      ],
-      stepsOrItems: [
-        {
-          phase: 'Módulo 1',
-          title: 'Control de Horómetro & Componentes',
-          description: 'Registro digital de horas de vuelo y seguimiento de partes con vida límite (TBO de motores, tren y hélices).',
-          status: 'Semáforo en Verde (Al Día)',
-        },
-        {
-          phase: 'Módulo 2',
-          title: 'Blindaje de Seguros & Coberturas',
-          description: 'Negociación de pólizas de casco aéreo con aseguradoras de primer nivel para cobertura nacional e internacional.',
-          status: 'Póliza Activa sin Brechas',
-        },
-        {
-          phase: 'Módulo 3',
-          title: 'Coordinación con Talleres OMAC',
-          description: 'Fiscalización de facturación y supervisión de mano de obra en talleres mecánicos autorizados por el INAC.',
-          status: 'Auditoría de Costos Aprobada',
-        },
-        {
-          phase: 'Módulo 4',
-          title: 'Reporte Financiero Mensual',
-          description: 'Estado de cuenta consolidado con desglose de combustible, tasas aeroportuarias, hangaraje y fondo de reserva de overhaul.',
-          status: 'Transparencia Contable Total',
-        },
-      ],
-      verdict: 'Eficiencia Máxima: Su aeronave conserva su valor de reventa en el mercado internacional',
-    },
-  },
+    accentColor: 'text-emerald-400',
+    glowColor: 'from-emerald-600/30 to-teal-500/10',
+    badge: 'Pilar 04 • Gestión Integral',
+    ctaText: 'Calcular Costo con la Calculadora',
+    ctaHref: '/calculadora',
+    highlightPoints: [
+      'Monitoreo continuo de horas de célula (TTAF), motores y hélices',
+      'Auditoría y renovación de pólizas de Casco y Responsabilidad Civil',
+      'Fiscalización técnica en talleres certificados OMAC en SVCS / SVMI',
+      'Ahorro promedio del ~14% en combustible y tasas operativas'
+    ]
+  }
 ];
 
 export function InteractivePillars() {
-  const [activePillarId, setActivePillarId] = useState<string>('ppi');
-  const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activePillarIndex, setActivePillarIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const activePillar = PILLARS.find((p) => p.id === activePillarId) || PILLARS[0];
-  const ActiveIcon = activePillar.icon;
-
-  // Intersection observer for subtle entry animations when scrolling into view
+  // Apple-style scroll listening
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollable = rect.height - windowHeight;
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+      if (totalScrollable <= 0) return;
 
-    return () => observer.disconnect();
+      // Scrolled amount within container
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
+
+      setScrollProgress(progress);
+
+      // Determine which pillar is active based on progress (0..1 split in 4 zones)
+      // 0..0.25 -> 0, 0.25..0.50 -> 1, 0.50..0.75 -> 2, 0.75..1 -> 3
+      const index = Math.min(3, Math.floor(progress * 4));
+      setActivePillarIndex(index);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Reset active step when changing pillar
-  useEffect(() => {
-    setActiveStepIndex(0);
-  }, [activePillarId]);
+  const scrollToPillar = (index: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const sectionTop = rect.top + scrollTop;
+    const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
+
+    // Center of that pillar's scroll bracket
+    const targetOffset = (index / 3.6) * totalScrollable;
+    window.scrollTo({
+      top: sectionTop + targetOffset,
+      behavior: 'smooth'
+    });
+  };
+
+  const activePillar = PILLARS[activePillarIndex];
 
   return (
-    <section
+    <div
       id="soluciones-aeronauticas"
-      ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-white via-slate-50 to-white border-b border-slate-200 relative overflow-hidden"
+      ref={containerRef}
+      className="relative bg-[#060c18] text-white"
+      style={{ height: '360vh' }} // Apple-style extended scroll runway
     >
-      {/* Decorative radar background rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] border border-blue-100/60 rounded-full pointer-events-none -z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] border border-blue-100/40 rounded-full pointer-events-none -z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] border border-blue-200/30 rounded-full pointer-events-none -z-0" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Sticky Cinematic Viewport (Stays locked on screen as user scrolls) */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-12 py-8 z-10">
         
-        {/* Section Header */}
-        <div
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-widest mb-3 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse" />
-            <span>Soluciones Integrales AeroLex Global</span>
+        {/* Subtle Ambient Background Radars & Lights */}
+        <div className="absolute inset-0 pointer-events-none -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] bg-gradient-radial from-blue-900/20 via-sky-900/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+          {/* Subtle radar rings */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-blue-500/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-blue-500/5 rounded-full" />
+        </div>
+
+        {/* Top Header & Scroll Guided Progress Bar */}
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-[11px] font-bold uppercase tracking-widest mb-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Explorador Interactivo Guiado</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight flex items-center gap-2">
+                <span>Los 4 Pilares del Servicio Aeronáutico</span>
+              </h2>
+            </div>
+
+            {/* Apple-style Scroll Progress Badge */}
+            <div className="flex items-center gap-3">
+              <div className="text-right">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Desplázate para avanzar
+                </div>
+                <div className="text-xs font-mono font-bold text-sky-400">
+                  Pilar {activePillar.number} / 04 • {Math.round(scrollProgress * 100)}% Completado
+                </div>
+              </div>
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
+                <Activity className="w-4 h-4 animate-spin" style={{ animationDuration: '6s' }} />
+              </div>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-            Los 4 Pilares del Servicio Aeronáutico
-          </h2>
-          
-          <p className="text-slate-600 text-sm sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
-            Combinamos el rigor del <strong>derecho mercantil y aeronáutico</strong> con la experiencia práctica en la <strong>cabina de mando</strong>. Selecciona cualquiera de los pilares para explorar su protocolo en vivo.
-          </p>
-
-          {/* Micro indicator */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
-            <span>Haz clic en un pilar para ver el desglose técnico y legal</span>
+          {/* Glowing Animated Progress Bar */}
+          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden mt-3">
+            <div
+              className="h-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-150 ease-out shadow-[0_0_12px_rgba(56,189,248,0.8)]"
+              style={{ width: `${Math.max(5, scrollProgress * 100)}%` }}
+            />
           </div>
         </div>
 
-        {/* 4 Interactive Pillar Cards Selector */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
-          {PILLARS.map((pillar, index) => {
-            const Icon = pillar.icon;
-            const isSelected = pillar.id === activePillarId;
+        {/* Main Split Cockpit: Left Interactive Stepper + Right Cinematic Stage */}
+        <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center my-auto py-2">
+          
+          {/* Left Column: 4 Pillar Steps with Scroll-Linked Tracking */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 flex items-center gap-2">
+              <Radio className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
+              <span>Scroll continuo o clic para saltar al pilar:</span>
+            </div>
 
-            return (
-              <button
-                key={pillar.id}
-                id={`pillar-card-${pillar.id}`}
-                onClick={() => setActivePillarId(pillar.id)}
-                className={`relative text-left p-6 rounded-3xl transition-all duration-300 flex flex-col justify-between group cursor-pointer border ${
-                  isSelected
-                    ? 'bg-white border-blue-500 shadow-xl shadow-blue-500/10 ring-2 ring-blue-500/20 -translate-y-1'
-                    : 'bg-white/80 hover:bg-white border-slate-200 hover:border-blue-300 shadow-xs hover:shadow-md'
-                }`}
-              >
-                {/* Active indicator bar on top */}
-                {isSelected && (
+            <div className="space-y-2.5 relative">
+              {PILLARS.map((pillar, idx) => {
+                const Icon = pillar.icon;
+                const isActive = idx === activePillarIndex;
+
+                return (
                   <div
-                    className={`absolute top-0 left-8 right-8 h-1 rounded-b-full bg-gradient-to-r ${pillar.color.gradient}`}
-                  />
-                )}
+                    key={pillar.id}
+                    id={`apple-pillar-step-${pillar.id}`}
+                    onClick={() => scrollToPillar(idx)}
+                    className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer text-left relative overflow-hidden group ${
+                      isActive
+                        ? 'bg-gradient-to-r from-white/[0.08] to-white/[0.02] border-blue-400/80 shadow-[0_0_25px_rgba(37,99,235,0.25)] scale-[1.02]'
+                        : 'bg-white/[0.02] hover:bg-white/[0.05] border-white/5 opacity-55 hover:opacity-90'
+                    }`}
+                  >
+                    {/* Active vertical accent bar */}
+                    {isActive && (
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-400 to-sky-400 shadow-[0_0_10px_#38bdf8]" />
+                    )}
 
-                <div>
-                  {/* Icon & Pillar Number */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-sm ${
-                        isSelected
-                          ? `${pillar.color.bg} text-white`
-                          : 'bg-slate-100 text-slate-700 group-hover:bg-blue-50 group-hover:text-blue-600'
-                      }`}
-                    >
-                      <Icon className="w-6 h-6" />
+                    <div className="flex items-start gap-3.5">
+                      <div
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                          isActive
+                            ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30'
+                            : 'bg-white/10 text-slate-400 group-hover:text-white'
+                        }`}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`text-[10px] font-black uppercase tracking-wider font-mono ${isActive ? 'text-sky-400' : 'text-slate-500'}`}>
+                            PILAR {pillar.number}
+                          </span>
+                          {isActive && (
+                            <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 animate-pulse">
+                              Activo en Pantalla
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className={`text-sm sm:text-base font-bold tracking-tight transition-colors ${isActive ? 'text-white' : 'text-slate-300'}`}>
+                          {pillar.title}
+                        </h3>
+
+                        <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                          {pillar.shortSubtitle}
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-                    <span
-                      className={`text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border transition-colors ${
-                        isSelected
-                          ? pillar.color.badgeBg
-                          : 'bg-slate-50 text-slate-400 border-slate-200'
-                      }`}
-                    >
-                      Pilar 0{index + 1}
+          {/* Right Column: Apple-Style Cinematic Animated Stage */}
+          <div className="lg:col-span-7">
+            <div className="relative bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-black/40 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[460px] flex flex-col justify-between">
+              
+              {/* Dynamic Animated Ambient Glow behind current card */}
+              <div
+                className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-br ${activePillar.glowColor} rounded-full blur-3xl pointer-events-none transition-all duration-700`}
+              />
+
+              {/* Stage Top Bar */}
+              <div>
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 font-mono text-xs font-black">
+                      {activePillar.number}
+                    </span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      {activePillar.badge}
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h3
-                    className={`text-base font-bold mb-2 transition-colors ${
-                      isSelected ? 'text-slate-900 font-extrabold' : 'text-slate-800'
-                    }`}
-                  >
-                    {pillar.title}
-                  </h3>
+                  <span className="text-[11px] font-mono text-slate-500">
+                    AeroLex Protocol v2.6
+                  </span>
+                </div>
 
-                  {/* Short Description */}
-                  <p className="text-xs text-slate-500 leading-relaxed">
-                    {pillar.shortDesc}
+                <div className="mt-5">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                    {activePillar.title}
+                  </h3>
+                  <p className="text-sm text-slate-300 mt-2 font-medium leading-relaxed">
+                    {activePillar.tagline}
                   </p>
                 </div>
+              </div>
 
-                {/* Bottom Action Hint */}
-                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                  <span
-                    className={`transition-colors ${
-                      isSelected ? pillar.color.text : 'text-slate-400 group-hover:text-slate-700'
-                    }`}
-                  >
-                    {isSelected ? 'Explorando protocolo' : 'Explorar detalles'}
-                  </span>
-                  <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                      isSelected
-                        ? `${pillar.color.bg} text-white`
-                        : 'bg-slate-100 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5'
-                    }`}
-                  >
-                    <ChevronRight className="w-3.5 h-3.5" />
+              {/* Center Morphing Graphic: Tailored Visual Simulation for Each Pillar */}
+              <div className="my-6">
+                
+                {/* Pillar 01 Visual: Radar Diagnostic Scanner */}
+                {activePillarIndex === 0 && (
+                  <div className="bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-4 animate-in fade-in zoom-in-95 duration-400">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                        Telemetría & Auditoría PPI in situ
+                      </span>
+                      <span className="font-mono text-emerald-400 font-bold">48/48 PUNTOS APROBADOS</span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Boroscopia Motores</div>
+                        <div className="text-sm font-bold text-white mt-0.5">Turbinas PT6A / TSIO</div>
+                        <div className="text-[10px] text-emerald-400 font-semibold mt-1">Sin desprendimiento térmico</div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Medición Ultrasónica</div>
+                        <div className="text-sm font-bold text-white mt-0.5">Largueros & Célula</div>
+                        <div className="text-[10px] text-emerald-400 font-semibold mt-1">100% Espesor Nominal</div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Vuelo de Prueba al Mando</div>
+                        <div className="text-sm font-bold text-white mt-0.5">Test IFR & Presurización</div>
+                        <div className="text-[10px] text-sky-400 font-semibold mt-1">Piloto Comercial CPL</div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Auditoría Registral</div>
+                        <div className="text-sm font-bold text-white mt-0.5">Clear Title Certificado</div>
+                        <div className="text-[10px] text-emerald-400 font-semibold mt-1">Sin embargos ni prendas</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                )}
 
-        {/* Interactive Deep-Dive Cockpit (Explorador Interactivo del Pilar Seleccionado) */}
-        <div
-          id={`pillar-detail-view-${activePillar.id}`}
-          className="bg-white border-2 border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-500 animate-in fade-in zoom-in-98"
-        >
-          {/* Subtle colored ambient corner glow */}
-          <div
-            className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-br ${activePillar.color.gradient} opacity-5 blur-3xl pointer-events-none rounded-full`}
-          />
+                {/* Pillar 02 Visual: Official INAC Legal Document Workflow */}
+                {activePillarIndex === 1 && (
+                  <div className="bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-3.5 animate-in fade-in zoom-in-95 duration-400">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                        <FileCheck className="w-4 h-4 text-sky-400" />
+                        Ruta Registral INAC (RAV 45 & RAV 47)
+                      </span>
+                      <span className="font-mono text-sky-400 font-bold">REGULARIZACIÓN TOTAL</span>
+                    </div>
 
-          {/* Top Header of the Cockpit */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-8 border-b border-slate-100 gap-6">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${activePillar.color.badgeBg}`}>
-                  {activePillar.badge}
-                </span>
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                  Protocolo Oficial AeroLex Global
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                <span>{activePillar.title}</span>
-              </h3>
-
-              <p className="text-sm text-slate-600 font-medium max-w-2xl">
-                {activePillar.tagline}
-              </p>
-            </div>
-
-            {/* Direct CTA Button */}
-            <div className="shrink-0">
-              <Link
-                href={activePillar.cta.href}
-                target={activePillar.cta.isExternal ? '_blank' : undefined}
-                rel={activePillar.cta.isExternal ? 'noopener noreferrer' : undefined}
-                className={`inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm text-white shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 ${activePillar.color.bg} hover:brightness-110 shadow-blue-500/20`}
-              >
-                <span>{activePillar.cta.text}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Key Metrics Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
-            {activePillar.interactiveDemo.metrics.map((metric, i) => (
-              <div
-                key={i}
-                className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-slate-300 transition flex flex-col justify-between"
-              >
-                <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                  {metric.label}
-                </div>
-                <div className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                  {metric.value}
-                </div>
-                <div className="text-[11px] text-slate-500 mt-1 font-medium">
-                  {metric.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Main Interactive Stage: 2-Columns (Steps Breakdown + Value Checklist) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
-            
-            {/* Left: Interactive Step-by-Step Simulator */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-blue-600" />
-                  <span>Fases del Protocolo (Haz clic en cada fase para ver el detalle)</span>
-                </h4>
-                <span className="text-[11px] text-slate-400 font-semibold">
-                  Fase {activeStepIndex + 1} de {activePillar.interactiveDemo.stepsOrItems.length}
-                </span>
-              </div>
-
-              <div className="space-y-2.5">
-                {activePillar.interactiveDemo.stepsOrItems.map((step, idx) => {
-                  const isStepActive = idx === activeStepIndex;
-
-                  return (
-                    <div
-                      key={idx}
-                      onClick={() => setActiveStepIndex(idx)}
-                      className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-                        isStepActive
-                          ? 'bg-blue-50/70 border-blue-400 shadow-sm ring-1 ring-blue-400/20'
-                          : 'bg-white hover:bg-slate-50 border-slate-200'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-3 mb-1.5">
-                        <div className="flex items-center gap-2.5">
-                          <span
-                            className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider ${
-                              isStepActive
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-slate-100 text-slate-600'
-                            }`}
-                          >
-                            {step.phase}
+                    <div className="space-y-2">
+                      {[
+                        { step: '01', label: 'Protocolización Notarial', detail: 'Contrato de compraventa mercantil redactado y visado' },
+                        { step: '02', label: 'Inscripción en el RAN', detail: 'Ingreso ante el Registro Aeronáutico Nacional con solvencia' },
+                        { step: '03', label: 'Cédula de Matrícula YV', detail: 'Asignación oficial, cambio de titularidad e historial limpio' },
+                        { step: '04', label: 'Certificado de Aeronavegabilidad', detail: 'Emisión y renovación legal para vuelo inmediato' }
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-white/5 text-xs">
+                          <span className="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center shrink-0">
+                            {item.step}
                           </span>
-                          <span className="text-sm font-bold text-slate-900">
-                            {step.title}
-                          </span>
+                          <div className="flex-1">
+                            <span className="font-bold text-white">{item.label}</span>
+                            <span className="text-slate-400 text-[11px] block">{item.detail}</span>
+                          </div>
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                         </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-                        <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          <span>{step.status}</span>
-                        </span>
+                {/* Pillar 03 Visual: Escrow Vault & Secure Closing Shield */}
+                {activePillarIndex === 2 && (
+                  <div className="bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-4 animate-in fade-in zoom-in-95 duration-400">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                        <Lock className="w-4 h-4 text-indigo-400" />
+                        Arquitectura de Cierre con Escrow
+                      </span>
+                      <span className="font-mono text-indigo-400 font-bold">FONDOS PROTEGIDOS</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                      <div className="p-3.5 rounded-xl bg-red-950/20 border border-red-500/20">
+                        <div className="text-[10px] text-red-400 font-bold uppercase">Compra Tradicional Común</div>
+                        <ul className="mt-2 space-y-1.5 text-[11px] text-slate-300">
+                          <li>❌ Entrega de dinero directo al vendedor</li>
+                          <li>❌ Sin cláusula de escape si hay fallas</li>
+                          <li>❌ Riesgo de embargos o gravámenes ocultos</li>
+                        </ul>
                       </div>
 
-                      <p className="text-xs text-slate-600 leading-relaxed pl-1">
-                        {step.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Bottom Verdict Box */}
-              <div className="p-4 rounded-2xl bg-slate-900 text-white flex items-center justify-between gap-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                    <BadgeCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-                      Dictamen Final del Pilar
-                    </div>
-                    <div className="text-xs sm:text-sm font-bold text-white">
-                      {activePillar.interactiveDemo.verdict}
+                      <div className="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                        <div className="text-[10px] text-emerald-400 font-bold uppercase">AeroLex Global Shield</div>
+                        <ul className="mt-2 space-y-1.5 text-[11px] text-slate-200">
+                          <li>✅ Depósito protegido en cuenta Escrow</li>
+                          <li>✅ Salida 100% garantizada ante fallas de PPI</li>
+                          <li>✅ Fondos liberados solo contra bitácoras y llaves</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                )}
 
-            {/* Right: Technical Features & Legal Guarantees */}
-            <div className="lg:col-span-5 bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-6">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-1 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Garantías y Alcance del Servicio</span>
-                </div>
-                <h4 className="text-base font-extrabold text-slate-900">
-                  ¿Qué incluye exactamente esta solución?
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Protegemos su patrimonio con estándares aeronáuticos auditables:
-                </p>
-              </div>
-
-              <ul className="space-y-3.5">
-                {activePillar.features.map((feat, i) => (
-                  <li key={i} className="flex items-start gap-3 text-xs text-slate-700 leading-relaxed">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
+                {/* Pillar 04 Visual: Turn-Key Telemetry & Cost Dashboard */}
+                {activePillarIndex === 3 && (
+                  <div className="bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-4 animate-in fade-in zoom-in-95 duration-400">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                        <Wrench className="w-4 h-4 text-emerald-400" />
+                        Monitoreo de Aeronave en Tiempo Real
+                      </span>
+                      <span className="font-mono text-emerald-400 font-bold">DISPONIBILIDAD 99.2%</span>
                     </div>
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
 
-              {/* Aviation Authority Callout */}
-              <div className="pt-4 border-t border-slate-200 text-[11px] text-slate-500 space-y-1">
-                <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                  <Plane className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Cobertura en Hangares:</span>
-                </div>
-                <p>
-                  SVCS (Charallave), SVMI (Maiquetía), SVFM (La Carlota), Valencia (SVVA) y operaciones en el Caribe / EE. UU.
-                </p>
+                    <div className="grid grid-cols-3 gap-2.5 text-center text-xs">
+                      <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Horas de Célula</div>
+                        <div className="text-base font-black text-white font-mono mt-0.5">3,420 TTAF</div>
+                        <div className="text-[9px] text-emerald-400 font-bold">Al día</div>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Pólizas Casco & RC</div>
+                        <div className="text-base font-black text-emerald-400 font-mono mt-0.5">ACTIVA</div>
+                        <div className="text-[9px] text-slate-400">Sin brechas</div>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                        <div className="text-[10px] text-slate-400 font-bold">Ahorro Operativo</div>
+                        <div className="text-base font-black text-sky-400 font-mono mt-0.5">~14%</div>
+                        <div className="text-[9px] text-slate-400">Combustible SVCS</div>
+                      </div>
+                    </div>
+
+                    <p className="text-[11px] text-slate-300 italic text-center">
+                      &quot;Reportes mensuales consolidados con desglose exacto de combustible, hangaraje y fondo de reserva de overhaul.&quot;
+                    </p>
+                  </div>
+                )}
+
               </div>
 
-              {/* Quick direct link */}
-              <div className="pt-2">
+              {/* Stage Bottom Features & Action Button */}
+              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                  <BadgeCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Solución integral respaldada con membrete legal colegiado</span>
+                </div>
+
                 <Link
-                  href={activePillar.cta.href}
-                  target={activePillar.cta.isExternal ? '_blank' : undefined}
-                  rel={activePillar.cta.isExternal ? 'noopener noreferrer' : undefined}
-                  className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-blue-700 font-bold text-xs flex items-center justify-center gap-2 transition shadow-2xs"
+                  href={activePillar.ctaHref}
+                  target={activePillar.isExternal ? '_blank' : undefined}
+                  rel={activePillar.isExternal ? 'noopener noreferrer' : undefined}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5"
                 >
-                  <span>{activePillar.cta.text}</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>{activePillar.ctaText}</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-            </div>
 
+            </div>
           </div>
 
+        </div>
+
+        {/* Bottom subtle scroll helper cue */}
+        <div className="max-w-7xl w-full mx-auto flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-white/5 font-mono">
+          <span>AeroLex Global • Soluciones Aeronáuticas</span>
+          <div className="flex items-center gap-2 text-sky-400">
+            <span className="animate-bounce">↓</span>
+            <span>Continúa haciendo scroll hacia abajo</span>
+          </div>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
