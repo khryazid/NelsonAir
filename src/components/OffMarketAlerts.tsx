@@ -91,7 +91,7 @@ export function OffMarketAlerts() {
     }
   };
 
-  const dynamicWhatsAppText = `Hola Cap. Abg. Nelson Sánchez, he completado el mandato de búsqueda off-market para ${
+  const dynamicWhatsAppText = `Hola equipo de AeroLex Global, he completado el mandato de búsqueda off-market para ${
     formData.categories.join(', ')
   } con presupuesto ${formData.budget} y horizonte ${formData.timeline}. Deseo recibir fichas técnicas confidenciales.`;
 

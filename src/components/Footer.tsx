@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from '@/lib/utils';
 
 export function Footer() {
   const whatsappUrl = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson Sánchez, deseo realizar una consulta jurídica o técnica.'
+    'Hola equipo de AeroLex Global, deseo realizar una consulta jurídica o técnica.'
   );
 
   return (
@@ -19,10 +19,10 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm">
                 <Plane className="w-4 h-4 transform -rotate-45" />
               </div>
-              <span>DESPACHO AERONÁUTICO</span>
+              <span>AEROLEX GLOBAL</span>
             </div>
             <p className="text-slate-500 leading-relaxed text-[12px]">
-              Asesoría legal mercantil & aeronáutica integral, peritaje técnico in situ y corretaje exclusivo al mando del <strong>Cap. Abg. Nelson Sánchez</strong> (piloto comercial activo y abogado especialista).
+              Firma global especializada en asesoría legal mercantil & aeronáutica integral, peritaje técnico in situ y corretaje ejecutivo de aeronaves bajo normativas INAC y FAA.
             </p>
             <div className="text-[11px] text-blue-700 font-semibold pt-1">
               • Caracas, Venezuela • Multijurisdicción YV (INAC) / FAA N-Number
@@ -118,7 +118,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-2 text-slate-600 text-[12px]">
                 <Mail className="w-4 h-4 text-blue-600" />
-                <span>nelson.sanchez@abogadoaeronautico.com</span>
+                <span>contacto@aerolexglobal.com</span>
               </div>
             </div>
             <div className="pt-2">
@@ -138,7 +138,7 @@ export function Footer() {
         {/* Legal Disclaimer & Copyright */}
         <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <p>
-            © {new Date().getFullYear()} Cap. Abg. Nelson Sánchez • Despacho Legal Aeronáutico & Mercantil. Todos los derechos reservados.
+            © {new Date().getFullYear()} AeroLex Global • Aviation Law & Executive Brokerage. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Regulado bajo Normativa Técnica INAC & FAA</span>

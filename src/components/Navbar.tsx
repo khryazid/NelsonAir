@@ -34,7 +34,7 @@ export function Navbar() {
   ];
 
   const whatsappDirect = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson Sánchez, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
+    'Hola equipo de AeroLex Global, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
   );
 
   return (
@@ -50,14 +50,14 @@ export function Navbar() {
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-2">
                 <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
-                  NELSON SÁNCHEZ
+                  AEROLEX GLOBAL
                 </span>
                 <span className="hidden sm:inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider whitespace-nowrap">
-                  PILOT-LAWYER
+                  GLOBAL ADVISORY
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 font-medium tracking-wide whitespace-nowrap">
-                Derecho Aeronáutico & Mercantil • Brokerage
+                Aviation Law & Executive Brokerage
               </p>
             </div>
           </Link>

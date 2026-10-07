@@ -24,7 +24,7 @@ export function AircraftCard({ aircraft, onOpenDetails }: AircraftCardProps) {
   const specs = aircraft.technical_specs;
 
   const whatsappInquiry = buildWhatsAppLink(
-    `Hola Cap. Abg. Nelson Sánchez, solicito información técnica y jurídica detallada sobre la aeronave ${aircraft.make} ${aircraft.model} matrícula ${aircraft.registration_mark}.`
+    `Hola equipo de AeroLex Global, solicito información técnica y jurídica detallada sobre la aeronave ${aircraft.make} ${aircraft.model} matrícula ${aircraft.registration_mark}.`
   );
 
   const statusBadge = () => {

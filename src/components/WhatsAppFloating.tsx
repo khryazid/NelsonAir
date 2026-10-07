@@ -10,7 +10,7 @@ interface WhatsAppFloatingProps {
 }
 
 export function WhatsAppFloating({
-  defaultMessage = 'Hola Cap. Abg. Nelson Sánchez, me gustaría conversar directamente sobre asesoría legal aeronáutica o búsqueda de una aeronave.',
+  defaultMessage = 'Hola equipo de AeroLex Global, me gustaría conversar directamente sobre asesoría legal aeronáutica o corretaje de una aeronave.',
   phoneNumber = '584120000000'
 }: WhatsAppFloatingProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +34,11 @@ export function WhatsAppFloating({
               </div>
               <div>
                 <h4 className="text-xs font-bold tracking-wide text-slate-900">
-                  Cap. Abg. Nelson Sánchez
+                  AeroLex Global
                 </h4>
                 <p className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  En línea para consultas directas
+                  Atención Ejecutiva & Consultoría Directa
                 </p>
               </div>
             </div>
@@ -52,7 +52,7 @@ export function WhatsAppFloating({
 
           <div className="py-3">
             <p className="text-xs text-slate-600 mb-2">
-              Mensaje directo al teléfono del piloto-abogado (sin secretarias ni filtros):
+              Mensaje directo al equipo jurídico y pericial de AeroLex Global:
             </p>
             <textarea
               value={customMsg}

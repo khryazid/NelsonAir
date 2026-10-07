@@ -127,7 +127,7 @@ export function CostCalculator() {
     };
   }, [category, monthlyHours, crewType, baseAirport, preset]);
 
-  const whatsappMessage = `Hola Cap. Abg. Nelson Sánchez, utilicé la calculadora para un ${preset.name} (${preset.example}) con ${monthlyHours} horas/mes basado en ${baseAirport}. Mi costo mensual estimado es ${formatCurrency(calculations.totalMonthly)}. Me gustaría una propuesta formal de administración.`;
+  const whatsappMessage = `Hola equipo de AeroLex Global, utilicé la calculadora para un ${preset.name} (${preset.example}) con ${monthlyHours} horas/mes basado en ${baseAirport}. Mi costo mensual estimado es ${formatCurrency(calculations.totalMonthly)}. Me gustaría una propuesta formal de administración.`;
   const whatsappUrl = buildWhatsAppLink(whatsappMessage);
 
   return (

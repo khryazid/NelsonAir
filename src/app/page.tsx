@@ -27,7 +27,7 @@ export default function HomePage() {
   const featuredAircraft = INITIAL_AIRCRAFT.slice(0, 3);
 
   const whatsappHeroUrl = buildWhatsAppLink(
-    'Hola Cap. Abg. Nelson Sánchez, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
+    'Hola equipo de AeroLex Global, requiero asesoría legal aeronáutica o peritaje de una aeronave.'
   );
 
   return (
@@ -50,7 +50,7 @@ export default function HomePage() {
           {/* Pilot-Lawyer Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6 shadow-xs">
             <Plane className="w-3.5 h-3.5 transform -rotate-45 text-blue-600" />
-            <span>Cap. Abg. Nelson Sánchez • Abogado & Piloto Comercial Activo</span>
+            <span>AeroLex Global • Firma Legal Aeronáutica & Executive Brokerage</span>
           </div>
 
           {/* Main Headline */}
@@ -179,7 +179,7 @@ export default function HomePage() {
                 </p>
               </div>
               <a
-                href={buildWhatsAppLink('Hola Cap. Abg. Nelson Sánchez, requiero gestionar trámites ante el INAC.')}
+                href={buildWhatsAppLink('Hola equipo de AeroLex Global, requiero gestionar trámites ante el INAC.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 text-xs text-sky-700 font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
@@ -353,12 +353,12 @@ export default function HomePage() {
                     <Plane className="w-10 h-10 transform -rotate-45" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold">Cap. Abg. Nelson Sánchez</h3>
-                    <p className="text-xs text-sky-200 font-semibold">Abogado Aeronáutico & Mercantil (29 años)</p>
-                    <p className="text-[11px] text-slate-300 mt-1">Piloto Comercial CPL con habilitación Multimotor e IFR</p>
+                    <h3 className="text-base font-bold">AeroLex Global</h3>
+                    <p className="text-xs text-sky-200 font-semibold">Dirección Legal & Peritaje Técnico Aeronáutico</p>
+                    <p className="text-[11px] text-slate-300 mt-1">Cuerpo Consultor & Pilotos CPL Multimotor e IFR • Especialistas Registrales</p>
                   </div>
                   <div className="p-3.5 bg-black/20 rounded-2xl border border-white/10 text-[11px] text-slate-200 leading-tight">
-                    &quot;La seguridad jurídica en la aviación no se negocia desde un escritorio: se comprueba en el hangar y se valida en vuelo.&quot;
+                    &quot;La seguridad jurídica y técnica en la aviación no se negocia desde un escritorio: se comprueba en el hangar y se valida en vuelo.&quot;
                   </div>
                 </div>
               </div>

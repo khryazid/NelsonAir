@@ -13,7 +13,7 @@ import { formatDate } from '@/lib/utils';
 export function PpiReportGenerator() {
   const [report, setReport] = useState<PpiReport>({
     ...SAMPLE_PPI_REPORT,
-    inspector_name: 'Cap. Abg. Nelson Sánchez (Piloto Comercial CPL / Abg. Aeronáutico)'
+    inspector_name: 'AeroLex Global (Dirección Pericial & CPL Activo)'
   });
   const [isEditing, setIsEditing] = useState(false);
 
@@ -141,10 +141,10 @@ export function PpiReportGenerator() {
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-950 uppercase">
-                DESPACHO AERONÁUTICO & MERCANTIL
+                AEROLEX GLOBAL
               </h1>
               <p className="text-xs font-bold text-blue-700 tracking-wider uppercase">
-                Cap. Abg. Nelson Sánchez • Peritaje Técnico & Blindaje Jurídico
+                Aviation Law Advisory & Technical Pre-Purchase Inspection
               </p>
               <p className="text-[11px] text-slate-500">
                 Caracas, Venezuela • Operaciones SVCS / SVMI / SVFM • Multijurisdicción INAC & FAA

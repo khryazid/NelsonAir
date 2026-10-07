@@ -19,23 +19,23 @@ const interMono = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Cap. Abg. Nelson Sánchez | Derecho Aeronáutico, Brokerage & Peritaje in situ',
+  title: 'AeroLex Global | Derecho Aeronáutico, Executive Brokerage & Peritaje in situ',
   description:
-    'Plataforma integral de derecho aeronáutico y mercantil en Caracas, Venezuela (SVCS, SVMI, SVFM). Inspección técnica de aeronaves al mando de un piloto comercial + blindaje jurídico registral INAC / FAA sin intermediarios.',
+    'AeroLex Global: Firma especializada en derecho aeronáutico mercantil, inspección técnica de aeronaves (PPI) in situ y corretaje ejecutivo bajo estándares INAC y FAA en Caracas, Venezuela (SVCS, SVMI, SVFM).',
   keywords: [
-    'Nelson Sanchez Abogado Aeronautico',
-    'Abogado Aeronáutico Venezuela',
+    'AeroLex Global',
+    'AeroLex Aviation Advisory',
+    'Derecho Aeronáutico Venezuela',
     'Peritaje Aeronave Caracas',
     'Pre-Purchase Inspection PPI Charallave SVCS',
     'Brokerage Aeronaves Venezuela',
     'Trámites INAC',
-    'Piloto Abogado',
     'Aeronaves en Venta Venezuela King Air Citation',
     'Administración Aeronáutica Turn-Key'
   ],
-  authors: [{ name: 'Cap. Abg. Nelson Sánchez' }],
+  authors: [{ name: 'AeroLex Global' }],
   openGraph: {
-    title: 'Cap. Abg. Nelson Sánchez | Derecho Aeronáutico & Brokerage',
+    title: 'AeroLex Global | Derecho Aeronáutico & Executive Brokerage',
     description:
       'Inspección técnica al mando de un piloto + blindaje legal mercantil y aeronáutico. Caracas, Venezuela.',
     type: 'website',

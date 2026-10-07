@@ -28,7 +28,7 @@ export function AircraftDetailModal({ aircraft, onClose }: AircraftDetailModalPr
   const specs = aircraft.technical_specs;
 
   const whatsappInquiry = buildWhatsAppLink(
-    `Hola Cap. Abg. Nelson Sánchez, requiero el dossier jurídico y técnico completo de la aeronave ${aircraft.make} ${aircraft.model} (${aircraft.registration_mark}).`
+    `Hola equipo de AeroLex Global, requiero el dossier jurídico y técnico completo de la aeronave ${aircraft.make} ${aircraft.model} (${aircraft.registration_mark}).`
   );
 
   return (
